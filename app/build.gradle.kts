@@ -16,12 +16,31 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        // Servidor Sabio Oficial Público (Acceso vía 4G/Internet sin VPN)
-        buildConfigField("String", "BASE_URL", "\"https://server-sabio.tail2474b3.ts.net:8443/api/v1/\"")
+        // URL del backend: se puede sobreescribir sin tocar código con
+        //   -PPRISMA_BASE_URL=https://host/api/v1/   o variable de entorno PRISMA_BASE_URL
+        val baseUrl = (project.findProperty("PRISMA_BASE_URL") as String?)
+            ?: System.getenv("PRISMA_BASE_URL")
+            ?: "https://server-sabio.tail2474b3.ts.net:8443/api/v1/"
+        buildConfigField("String", "BASE_URL", "\"$baseUrl\"")
+    }
+
+    // Firma de release (N-06): las credenciales llegan por variables de entorno
+    // (GitHub Secrets). Si no existen, el release se genera sin firmar.
+    val ksPath = System.getenv("PRISMA_KEYSTORE_PATH")
+    signingConfigs {
+        if (ksPath != null) {
+            create("release") {
+                storeFile = file(ksPath)
+                storePassword = System.getenv("PRISMA_KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("PRISMA_KEY_ALIAS")
+                keyPassword = System.getenv("PRISMA_KEY_PASSWORD")
+            }
+        }
     }
 
     buildTypes {
         release {
+            if (ksPath != null) signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),

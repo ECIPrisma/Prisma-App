@@ -1,5 +1,6 @@
 package com.prisma.mobile.ui.auth
 
+import com.prisma.mobile.BuildConfig
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -36,6 +37,10 @@ class LoginActivity : AppCompatActivity() {
 
         // Reflejar URL actual configurada
         updateServerDisplay()
+
+        // Accesos demo y credenciales de prueba: SOLO en builds debug (N-05)
+        binding.demoSelectors.visibility =
+            if (BuildConfig.DEBUG) android.view.View.VISIBLE else android.view.View.GONE
 
         // Botón rápido para rol Tendero
         binding.btnQuickTendero.setOnClickListener {
