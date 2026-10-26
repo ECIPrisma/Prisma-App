@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="76dp"
+    android:height="76dp"
+    android:viewportWidth="76"
+    android:viewportHeight="76">
+    <!-- Fondo blanco limpio -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M10,2 h56 a8,8 0 0,1 8,8 v56 a8,8 0 0,1 -8,8 h-56 a8,8 0 0,1 -8,-8 v-56 a8,8 0 0,1 8,-8 z" />
+    
+    <!-- Tapa rosca azul Brisa -->
+    <path
+        android:fillColor="#0284C7"
+        android:pathData="M33,6 h10 v4 h-10 z" />
+
+    <!-- Cuello transparente -->
+    <path
+        android:fillColor="#BAE6FD"
+        android:pathData="M34,10 h8 v8 h-8 z" />
+
+    <!-- Botella plástica cristalina ondulada (forma real Agua Brisa) -->
+    <path
+        android:fillColor="#F0F9FF"
+        android:strokeColor="#38BDF8"
+        android:strokeWidth="1.2"
+        android:pathData="M27,24 c0,-4 3,-4 7,-4 h8 c4,0 7,0 7,4 v10 c-2,2 -2,4 0,6 v16 c0,6 -3,8 -11,8 c-8,0 -11,-2 -11,-8 v-16 c2,-2 2,-4 0,-6 z" />
+
+    <!-- Etiqueta Oficial Agua Brisa Azul Oscuro y Celeste -->
+    <path
+        android:fillColor="#0369A1"
+        android:pathData="M26,34 h24 v14 h-24 z" />
+    
+    <!-- Onda blanca y gota en la etiqueta -->
+    <path
+        android:strokeColor="#38BDF8"
+        android:strokeWidth="2"
+        android:pathData="M28,42 Q38,38 48,42" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M38,36 c0,0 -3,3.5 -3,5 a3,3 0 0,0 6,0 c0,-1.5 -3,-5 -3,-5 z" />
+
+    <!-- Burbujas finas de gas carbónico -->
+    <path
+        android:fillColor="#38BDF8"
+        android:pathData="M31,52 a1.5,1.5 0 1,0 3,0 a1.5,1.5 0 1,0 -3,0 M43,50 a2,2 0 1,0 4,0 a2,2 0 1,0 -4,0 M34,58 a1.5,1.5 0 1,0 3,0 a1.5,1.5 0 1,0 -3,0" />
+</vector>

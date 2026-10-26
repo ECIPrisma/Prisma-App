@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/prisma_surface">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="2dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/prisma_border"
+        app:cardBackgroundColor="@color/prisma_white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="28dp">
+
+            <!-- Logo -->
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/logo_icono_tienda" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="12dp"
+                android:text="@string/app_name"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/prisma_text_primary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/app_slogan"
+                android:textSize="13sp"
+                android:textColor="@color/prisma_text_secondary" />
+
+            <!-- Email Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:boxCornerRadiusTopStart="14dp"
+                app:boxCornerRadiusTopEnd="14dp"
+                app:boxCornerRadiusBottomStart="14dp"
+                app:boxCornerRadiusBottomEnd="14dp"
+                app:boxStrokeColor="@color/prisma_teal_dark"
+                app:boxStrokeWidth="1.5dp"
+                app:hintTextColor="@color/prisma_teal_dark"
+                android:textColorHint="@color/prisma_text_secondary">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_email"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/prisma_text_primary"
+                    android:textColorHint="@color/prisma_text_secondary"
+                    android:textSize="15sp"
+                    android:text="dona.marta@labendicion.com" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Password Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:boxCornerRadiusTopStart="14dp"
+                app:boxCornerRadiusTopEnd="14dp"
+                app:boxCornerRadiusBottomStart="14dp"
+                app:boxCornerRadiusBottomEnd="14dp"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/prisma_text_primary"
+                app:boxStrokeColor="@color/prisma_teal_dark"
+                app:boxStrokeWidth="1.5dp"
+                app:hintTextColor="@color/prisma_teal_dark"
+                android:textColorHint="@color/prisma_text_secondary">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/prisma_text_primary"
+                    android:textColorHint="@color/prisma_text_secondary"
+                    android:textSize="15sp"
+                    android:text="admin123" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Quick Demo Selectors -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:weightSum="2">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnQuickTendero"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    android:text="Tendero"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/prisma_teal_dark"
+                    app:strokeColor="@color/prisma_teal_dark"
+                    app:strokeWidth="1.5dp"
+                    app:cornerRadius="10dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnQuickConductor"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    android:text="Conductor"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/prisma_teal_dark"
+                    app:strokeColor="@color/prisma_teal_dark"
+                    app:strokeWidth="1.5dp"
+                    app:cornerRadius="10dp" />
+            </LinearLayout>
+
+            <!-- Login Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="18dp"
+                android:text="INGRESAR A PRISMA"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/prisma_white"
+                app:cornerRadius="14dp"
+                app:backgroundTint="@color/prisma_teal_dark" />
+
+            <!-- Progress Indicator -->
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="12dp"
+                android:visibility="gone"
+                android:indeterminateTint="@color/prisma_teal" />
+
+            <!-- Server IP Status / Edit Dialog Trigger -->
+            <TextView
+                android:id="@+id/tvServerConfig"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:text="Servidor: https://server-sabio.tail2474b3.ts.net:8443/api/v1/ (Toca para cambiar)"
+                android:textSize="11sp"
+                android:textColor="@color/prisma_text_secondary"
+                android:padding="6dp" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

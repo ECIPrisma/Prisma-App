@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 1. Pantalla Principal: Limpia y enfocada 100% en la Hoja de Ruta y Paradas -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/prisma_surface">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:elevation="0dp">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/prisma_teal"
+                app:navigationIcon="@drawable/ic_menu"
+                app:navigationIconTint="@color/prisma_white"
+                app:title="PRISMA - Hoja de Ruta"
+                app:titleTextColor="@color/prisma_white"
+                app:menu="@menu/menu_main_toolbar" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <!-- Banner Resumen del Camión y Estado de Ruta -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="1dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/prisma_border"
+                app:cardBackgroundColor="@color/prisma_white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="12dp"
+                    android:gravity="center_vertical">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvTruckId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Camión #CAMION-NORTE-01"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/prisma_text_primary" />
+
+                        <TextView
+                            android:id="@+id/tvRouteCode"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Ruta: RUTA-KENNEDY-01"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/prisma_teal_dark" />
+
+                        <TextView
+                            android:id="@+id/tvRouteZone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:text="Sector: Kennedy Central - Timiza"
+                            android:textSize="11sp"
+                            android:textColor="@color/prisma_text_secondary" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="end">
+
+                        <TextView
+                            android:id="@+id/tvRouteStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PLANIFICADA"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="#92400E"
+                            android:background="@drawable/badge_pill_promo"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="4dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnVerMapaBanner"
+                            style="@style/Widget.Material3.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:layout_marginTop="2dp"
+                            android:paddingHorizontal="4dp"
+                            android:text="Ver Mapa ›"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/prisma_teal_dark" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Encabezado de la Hoja de Ruta -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="6dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Paradas Secuenciales"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/prisma_text_primary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Toca una para validar"
+                    android:textSize="11sp"
+                    android:textColor="@color/prisma_text_secondary" />
+            </LinearLayout>
+
+            <!-- Lista de Paradas a Pantalla Completa -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvStops"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingHorizontal="16dp"
+                android:clipToPadding="false" />
+
+            <!-- Tarjeta Ergonómica de Validación de PIN de Entrega en Parada Activa -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/prisma_border"
+                app:cardBackgroundColor="@color/prisma_white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:id="@+id/tvSelectedStopInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Parada activa seleccionada"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/prisma_teal_dark" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="6dp"
+                        android:gravity="center_vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:boxStrokeColor="@color/prisma_teal_dark"
+                            app:boxStrokeWidth="1.5dp"
+                            app:boxCornerRadiusTopStart="10dp"
+                            app:boxCornerRadiusTopEnd="10dp"
+                            app:boxCornerRadiusBottomStart="10dp"
+                            app:boxCornerRadiusBottomEnd="10dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etPin"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:hint="PIN (6 dígitos)"
+                                android:inputType="number"
+                                android:maxLength="6"
+                                android:textColor="@color/prisma_text_primary"
+                                android:textStyle="bold"
+                                android:textSize="14sp"
+                                android:paddingVertical="0dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnConfirmDelivery"
+                            android:layout_width="wrap_content"
+                            android:layout_height="48dp"
+                            android:layout_marginStart="8dp"
+                            android:text="Validar PIN"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/prisma_white"
+                            app:cornerRadius="10dp"
+                            app:backgroundTint="@color/prisma_teal_dark" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!-- 2. Menú Lateral (Drawer) Desplegable con las 3 rayitas (☰) -->
+    <LinearLayout
+        android:id="@+id/navDrawer"
+        android:layout_width="320dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:orientation="vertical"
+        android:background="@color/prisma_white"
+        android:clickable="true"
+        android:focusable="true">
+
+        <!-- Cabecera de Perfil del Conductor y Vehículo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/prisma_teal"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="48dp"
+            android:paddingBottom="20dp">
+
+            <FrameLayout
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:background="@drawable/bg_product_placeholder"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_truck_marker" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tvConductorNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Juan Pérez"
+                android:textColor="@color/prisma_white"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvConductorInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Camión #CAMION-NORTE-01 • FEMSA Logística"
+                android:textColor="#E6F4F1"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvConductorBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/badge_pill_green"
+                android:text="EN OPERACIÓN • CONDUCTOR CERTIFICADO"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="#065F46"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp" />
+        </LinearLayout>
+
+        <!-- Opciones del Menú Lateral de Operaciones -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OPERACIONES DE RUTA"
+                    android:textColor="@color/prisma_text_secondary"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.08"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Opción 1: Iniciar Ruta del Día -->
+                <LinearLayout
+                    android:id="@+id/drawerOptIniciarRuta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_option_item"
+                    android:padding="14dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_route_start" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="14dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Iniciar Jornada de Ruta"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/prisma_text_primary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Activar salida y notificar tiendas"
+                            android:textSize="12sp"
+                            android:textColor="@color/prisma_text_secondary" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Opción: Mapa de Ruta en Vivo (Navegación) -->
+                <LinearLayout
+                    android:id="@+id/drawerOptMapaRuta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_option_item"
+                    android:padding="14dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_map_pin" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="14dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mapa de Reparto en Vivo"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/prisma_text_primary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ver camión y paradas en el mapa"
+                            android:textSize="12sp"
+                            android:textColor="@color/prisma_text_secondary" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Opción 2: Manifiesto de Carga -->
+                <LinearLayout
+                    android:id="@+id/drawerOptManifiesto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_option_item"
+                    android:padding="14dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_manifest" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="14dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Manifiesto de Carga"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/prisma_text_primary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Inventario consolidado en camión"
+                            android:textSize="12sp"
+                            android:textColor="@color/prisma_text_secondary" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Opción 3: Reportar Auxilio Mecánico / Varado -->
+                <LinearLayout
+                    android:id="@+id/drawerOptVarado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_option_item"
+                    android:padding="14dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_mechanic" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="14dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reportar Auxilio Mecánico"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/status_red" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Alerta prioritaria al centro de despacho"
+                            android:textSize="12sp"
+                            android:textColor="@color/prisma_text_secondary" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Opción 4: Cierre de Jornada y Cuadre de Caja -->
+                <LinearLayout
+                    android:id="@+id/drawerOptFinalizar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_option_item"
+                    android:padding="14dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_settlement" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="14dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cierre y Liquidación"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/prisma_text_primary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cuadre de caja y balance del día"
+                            android:textSize="12sp"
+                            android:textColor="@color/prisma_text_secondary" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Pie del Drawer: Cerrar Sesión y Versión -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/prisma_border" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:id="@+id/drawerOptLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingVertical="8dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/ic_logout"
+                    app:tint="@color/status_red" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="Cerrar Sesión"
+                    android:textColor="@color/status_red"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="PRISMA Logistics v1.4.0 • Enterprise"
+                android:textSize="10sp"
+                android:textColor="@color/prisma_text_secondary" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

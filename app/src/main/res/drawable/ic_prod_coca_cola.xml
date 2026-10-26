@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="76dp"
+    android:height="76dp"
+    android:viewportWidth="76"
+    android:viewportHeight="76">
+    <!-- Fondo blanco limpio con esquina suave -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M10,2 h56 a8,8 0 0,1 8,8 v56 a8,8 0 0,1 -8,8 h-56 a8,8 0 0,1 -8,-8 v-56 a8,8 0 0,1 8,-8 z" />
+    
+    <!-- Tapa rosca roja con relieve -->
+    <path
+        android:fillColor="#B91C1C"
+        android:pathData="M33,6 h10 v4 h-10 z" />
+    <path
+        android:fillColor="#EF4444"
+        android:pathData="M34,7 h8 v1 h-8 z" />
+
+    <!-- Anillo de seguridad y cuello plástico -->
+    <path
+        android:fillColor="#DC2626"
+        android:pathData="M34,10 h8 v3 h-8 z" />
+    <path
+        android:fillColor="#1C1917"
+        android:pathData="M35,13 h6 v6 h-6 z" />
+
+    <!-- Hombro y cuerpo contorneado de la botella con líquido oscuro caramelo -->
+    <path
+        android:fillColor="#1C1917"
+        android:pathData="M27,24 c0,-5 4,-5 8,-5 h2 c4,0 8,0 8,5 c0,5 -2,9 -2,16 c0,8 3,12 3,22 c0,5 -3,7 -10,7 c-7,0 -10,-2 -10,-7 c0,-10 3,-14 3,-22 c0,-7 -2,-11 -2,-16 z" />
+
+    <!-- Brillo/Reflejo realista en plástico -->
+    <path
+        android:strokeColor="#57534E"
+        android:strokeWidth="1.5"
+        android:pathData="M29,26 c0,5 2,8 2,14" />
+
+    <!-- Etiqueta Oficial Coca-Cola Roja -->
+    <path
+        android:fillColor="#DC2626"
+        android:pathData="M25.5,33 h25 v16 h-25 z" />
+
+    <!-- Ola blanca Dynamic Ribbon característica de Coca-Cola -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.5"
+        android:pathData="M27,42 Q38,36 49,42" />
+    <path
+        android:strokeColor="#FEE2E2"
+        android:strokeWidth="1.2"
+        android:pathData="M28,45 Q38,40 48,45" />
+
+    <!-- Texto indicativo estilizado -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M34,37 h8 v2 h-8 z" />
+</vector>

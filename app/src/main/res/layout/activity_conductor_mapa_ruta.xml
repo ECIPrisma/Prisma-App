@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/prisma_surface">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/prisma_teal"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:navigationIconTint="@color/prisma_white"
+            app:title="PRISMA - Navegación de Reparto"
+            app:titleTextColor="@color/prisma_white"
+            app:subtitle="Camión #CAMION-NORTE-01 • En Ruta"
+            app:subtitleTextColor="#E6F4F1" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- Mapa OpenStreetMap OSMDroid para Navegación del Conductor -->
+        <org.osmdroid.views.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!-- Botón Flotante para Re-centrar en el Camión -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabCenterTruck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:fabSize="mini"
+            app:backgroundTint="@color/prisma_white"
+            app:tint="@color/prisma_teal"
+            android:src="@drawable/ic_truck_marker"
+            android:contentDescription="Centrar camión" />
+
+        <!-- Tarjeta Flotante Inferior de Navegación del Conductor -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardParadaInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="14dp"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="6dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/prisma_border"
+            app:cardBackgroundColor="@color/prisma_white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Fila Superior: Info General de Ruta -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvRouteHeader"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ruta Kennedy Central • 3 Locales"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/prisma_text_primary" />
+
+                        <TextView
+                            android:id="@+id/tvTotalCashRoute"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:text="Recaudo proyectado: $520.000 COP"
+                            android:textSize="11sp"
+                            android:textColor="@color/prisma_teal_dark"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvRouteStatusBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="EN REPARTO"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:textColor="#065F46"
+                        android:background="@drawable/badge_pill_green"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="4dp" />
+                </LinearLayout>
+
+                <!-- Selector Rápido de Locales (Chips) -->
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:layout_marginTop="10dp">
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroupLocales"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipLocal1"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="1. La Bendición"
+                            android:textSize="11sp"
+                            android:textColor="@color/prisma_text_primary"
+                            android:textStyle="bold"
+                            app:chipStrokeColor="@color/prisma_teal_dark"
+                            app:chipStrokeWidth="1.5dp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipLocal2"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2. San José"
+                            android:textSize="11sp"
+                            android:textColor="@color/prisma_text_primary"
+                            android:textStyle="bold"
+                            app:chipStrokeColor="@color/prisma_border_active"
+                            app:chipStrokeWidth="1dp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipLocal3"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3. El Diamante"
+                            android:textSize="11sp"
+                            android:textColor="@color/prisma_text_primary"
+                            android:textStyle="bold"
+                            app:chipStrokeColor="@color/prisma_border_active"
+                            app:chipStrokeWidth="1dp" />
+                    </com.google.android.material.chip.ChipGroup>
+                </HorizontalScrollView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/prisma_border" />
+
+                <!-- Detalle del Local Seleccionado -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvLocalTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Parada #1: Tienda La Bendición"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/prisma_text_primary" />
+
+                    <TextView
+                        android:id="@+id/tvLocalAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Calle 45 Sur # 78H-12, Kennedy Central"
+                        android:textSize="11sp"
+                        android:textColor="@color/prisma_text_secondary" />
+
+                    <!-- Caja con Detalle de Carga y Cobro -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/bg_product_placeholder"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:id="@+id/tvLocalItems"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Carga para este local:\n• 3x Coca-Cola Original 400ml\n• 1x Coca-Cola 1.5L"
+                            android:textSize="11sp"
+                            android:textColor="@color/prisma_text_primary" />
+
+                        <TextView
+                            android:id="@+id/tvLocalCash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Cobro en mostrador: $126.000 COP"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/prisma_teal_dark" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Botones de Acción para el Conductor -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnVerHojaRuta"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="46dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        android:text="Ver Lista"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/prisma_teal_dark"
+                        app:strokeColor="@color/prisma_teal_dark"
+                        app:strokeWidth="1.5dp"
+                        app:cornerRadius="10dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnValidarPinLocal"
+                        android:layout_width="0dp"
+                        android:layout_height="46dp"
+                        android:layout_weight="1.3"
+                        android:layout_marginStart="6dp"
+                        android:text="Validar PIN"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/prisma_white"
+                        app:backgroundTint="@color/prisma_teal_dark"
+                        app:cornerRadius="10dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

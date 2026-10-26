@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">PRISMA</string>
+    <string name="app_slogan">Red de Tiendas de Barrio</string>
+    
+    <!-- Login -->
+    <string name="title_login">Iniciar Sesión</string>
+    <string name="hint_email">Correo Electrónico</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="btn_login">Ingresar a PRISMA</string>
+    <string name="login_loading">Autenticando credenciales...</string>
+
+    <!-- Conductor / Repartidor -->
+    <string name="title_conductor">Terminal del Vehículo</string>
+    <string name="btn_report_varado">Reportar Auxilio Mecánico</string>
+    <string name="btn_next_stop">Avanzar a Siguiente Parada</string>
+    <string name="lbl_current_route">Ruta en Ejecución</string>
+    <string name="lbl_truck_plate">Placa del Camión</string>
+    <string name="lbl_pin_delivery">Validar PIN de Entrega</string>
+
+    <!-- Tendero -->
+    <string name="title_catalogo">Catálogo de Productos</string>
+    <string name="title_pedidos">Mis Pedidos</string>
+    <string name="title_mi_tienda">Mi Tienda</string>
+    <string name="btn_hacer_pedido">Crear Pedido</string>
+</resources>

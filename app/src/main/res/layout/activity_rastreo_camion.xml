@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/prisma_teal"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:navigationIconTint="@color/prisma_white"
+            app:title="Rastreo del Camión en Vivo"
+            app:titleTextColor="@color/prisma_white" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- Mapa OpenStreetMap Gratuito (OSMDroid) -->
+        <org.osmdroid.views.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!-- Tarjeta Flotante Inferior de Información de Entrega y Pedido -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="14dp"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@color/prisma_white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Header de Camión & ETA -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvTruckId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Camión #CAMION-NORTE-01"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/prisma_text_primary" />
+
+                        <TextView
+                            android:id="@+id/tvRouteInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ruta Kennedy Central • Parada #2"
+                            android:textSize="12sp"
+                            android:textColor="@color/prisma_teal" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvEtaBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="A 12 MIN"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:textColor="#92400E"
+                        android:background="#FEF3C7"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="4dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/prisma_border" />
+
+                <!-- Sección: Pedido que trae el camión -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tvOrderNumberTrack"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Pedido en camino: #PED-2026-0002"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/prisma_text_primary" />
+
+                    <TextView
+                        android:id="@+id/tvPinPill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PIN: 839201"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:fontFamily="monospace"
+                        android:textColor="@color/prisma_orange_dark"
+                        android:background="@drawable/badge_pill_promo"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="3dp" />
+                </LinearLayout>
+
+                <!-- Detalle de productos cargados -->
+                <TextView
+                    android:id="@+id/tvProductsInTruck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Carga para entregar:\n• 3x Coca-Cola Original 400ml\n• 1x Coca-Cola 1.5L"
+                    android:textSize="11sp"
+                    android:textColor="@color/prisma_text_secondary"
+                    android:lineSpacingExtra="2dp" />
+
+                <!-- Total a pagar en mostrador -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total a pagar en mostrador:"
+                        android:textSize="12sp"
+                        android:textColor="@color/prisma_text_secondary" />
+
+                    <TextView
+                        android:id="@+id/tvTotalDueTrack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="$126.000 COP"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/prisma_teal_dark" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

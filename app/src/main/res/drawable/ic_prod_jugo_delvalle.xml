@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="76dp"
+    android:height="76dp"
+    android:viewportWidth="76"
+    android:viewportHeight="76">
+    <!-- Fondo blanco limpio -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M10,2 h56 a8,8 0 0,1 8,8 v56 a8,8 0 0,1 -8,8 h-56 a8,8 0 0,1 -8,-8 v-56 a8,8 0 0,1 8,-8 z" />
+    
+    <!-- Tapa verde oscura Del Valle -->
+    <path
+        android:fillColor="#15803D"
+        android:pathData="M33,6 h10 v4 h-10 z" />
+
+    <!-- Cuello con jugo cítrico -->
+    <path
+        android:fillColor="#FB923C"
+        android:pathData="M34,10 h8 v8 h-8 z" />
+
+    <!-- Botella con jugo natural naranja vivo -->
+    <path
+        android:fillColor="#EA580C"
+        android:pathData="M27,24 c0,-4 3,-4 7,-4 h8 c4,0 7,0 7,4 v32 c0,6 -3,8 -11,8 c-8,0 -11,-2 -11,-8 z" />
+
+    <!-- Reflejo de luz en el jugo -->
+    <path
+        android:strokeColor="#FDBA74"
+        android:strokeWidth="1.5"
+        android:pathData="M29,26 v28" />
+
+    <!-- Etiqueta Del Valle negra con marco verde oficial -->
+    <path
+        android:fillColor="#18181B"
+        android:pathData="M26,34 h24 v15 h-24 z" />
+    
+    <!-- Hoja verde Del Valle -->
+    <path
+        android:fillColor="#22C55E"
+        android:pathData="M34,36 c0,0 2,-2 5,-2 c0,3 -2,5 -5,2 z" />
+
+    <!-- Naranja cortada decorativa -->
+    <path
+        android:fillColor="#F97316"
+        android:pathData="M35,42 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0" />
+    <path
+        android:fillColor="#FEF08A"
+        android:pathData="M36.5,42 a2.5,2.5 0 1,0 5,0 a2.5,2.5 0 1,0 -5,0" />
+</vector>

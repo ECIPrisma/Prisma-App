@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="6dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="1dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/prisma_border"
+    app:cardBackgroundColor="@color/prisma_white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="14dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvOrderNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Pedido #PED-2026-0002"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/prisma_text_primary" />
+
+            <TextView
+                android:id="@+id/tvStatusBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EN RUTA"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="#92400E"
+                android:background="@drawable/badge_pill_promo"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="3dp" />
+        </LinearLayout>
+
+        <!-- PIN Digital de Entrega visible al tendero -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_product_placeholder"
+            android:padding="8dp"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="PIN de entrega:"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/prisma_text_primary" />
+
+            <TextView
+                android:id="@+id/tvPinInline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="839201"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="monospace"
+                android:textColor="@color/prisma_orange_dark" />
+        </LinearLayout>
+
+        <!-- Detalle de productos que trae el camión -->
+        <TextView
+            android:id="@+id/tvOrderProducts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Productos del pedido:\n• 3x Coca-Cola Original 400ml\n• 1x Coca-Cola 1.5L"
+            android:textSize="11sp"
+            android:textColor="@color/prisma_text_secondary" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvTotalAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Total: $126.000 COP"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="@color/prisma_teal_dark" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnReportAveria"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Reportar Novedad"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="10dp"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                app:strokeColor="@color/prisma_orange"
+                android:textColor="@color/prisma_orange_dark"
+                app:cornerRadius="8dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

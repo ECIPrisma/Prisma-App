@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Paleta Oficial PRISMA con Alto Contraste (Manual de Marca) -->
+    <color name="prisma_orange">#F59E0B</color>
+    <color name="prisma_orange_dark">#D97706</color>
+    <color name="prisma_orange_light">#FEF3C7</color>
+    
+    <color name="prisma_teal">#1E6F68</color>
+    <color name="prisma_teal_dark">#0F766E</color>
+    <color name="prisma_teal_light">#E6F4F1</color>
+
+    <!-- Textos de alto contraste certificados (Negro profundo #111827 y Grafito #374151) -->
+    <color name="prisma_text_primary">#111827</color>
+    <color name="prisma_text_secondary">#4B5563</color>
+    <color name="prisma_text_muted">#6B7280</color>
+    
+    <!-- Fondos y superficies limpias profesionales -->
+    <color name="prisma_border">#E2E8F0</color>
+    <color name="prisma_border_active">#1E6F68</color>
+    <color name="prisma_background">#FFFFFF</color>
+    <color name="prisma_surface">#F8FAFC</color>
+    <color name="prisma_card_bg">#FFFFFF</color>
+    <color name="prisma_white">#FFFFFF</color>
+
+    <!-- Estados e insignias con alto contraste -->
+    <color name="status_green">#059669</color>
+    <color name="status_green_bg">#D1FAE5</color>
+    <color name="status_green_text">#065F46</color>
+
+    <color name="status_red">#DC2626</color>
+    <color name="status_red_bg">#FEE2E2</color>
+    <color name="status_red_text">#991B1B</color>
+
+    <color name="promo_tag_bg">#FEF3C7</color>
+    <color name="promo_tag_text">#92400E</color>
+    <color name="frecuente_tag_bg">#EDE9FE</color>
+    <color name="frecuente_tag_text">#5B21B6</color>
+</resources>

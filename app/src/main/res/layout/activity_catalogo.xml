@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 1. Pantalla Principal: Limpia, Moderna y enfocada 100% en el Catálogo -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/prisma_surface">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:elevation="0dp">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/prisma_teal"
+                app:navigationIcon="@drawable/ic_menu"
+                app:navigationIconTint="@color/prisma_white"
+                app:title="PRISMA - Mi Tienda"
+                app:titleTextColor="@color/prisma_white"
+                app:menu="@menu/menu_main_toolbar" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <!-- Filtros Rápidos de Categoría -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:paddingHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupFiltros"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipTodos"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Todos"
+                        android:textColor="@color/prisma_text_primary"
+                        android:textStyle="bold"
+                        app:chipStrokeColor="@color/prisma_border_active"
+                        app:chipStrokeWidth="1.5dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipSuscritos"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Frecuentes"
+                        android:textColor="@color/prisma_text_primary"
+                        android:textStyle="bold"
+                        app:chipStrokeColor="@color/prisma_border_active"
+                        app:chipStrokeWidth="1.5dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipPromociones"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Promociones"
+                        android:textColor="@color/prisma_text_primary"
+                        android:textStyle="bold"
+                        app:chipStrokeColor="@color/prisma_border_active"
+                        app:chipStrokeWidth="1.5dp" />
+
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
+
+            <!-- Lista de Productos a Pantalla Completa -->
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipeRefresh"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvProductos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="16dp"
+                    android:paddingBottom="84dp"
+                    android:clipToPadding="false" />
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        </LinearLayout>
+
+        <!-- Extended Floating Action Button para Confirmar Carrito -->
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fabCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="18dp"
+            android:text="Ver Carrito (0)"
+            android:textColor="@color/prisma_white"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:icon="@drawable/ic_cart"
+            app:iconTint="@color/prisma_white"
+            app:backgroundTint="@color/prisma_teal" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!-- 2. Menú Lateral (Drawer) Desplegable con las 3 rayitas (☰) -->
+    <LinearLayout
+        android:id="@+id/navDrawer"
+        android:layout_width="320dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:orientation="vertical"
+        android:background="@color/prisma_white"
+        android:clickable="true"
+        android:focusable="true">
+
+        <!-- Cabecera de Perfil de la Tienda -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/prisma_teal"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="48dp"
+            android:paddingBottom="20dp">
+
+            <FrameLayout
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:background="@drawable/bg_product_placeholder"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/logo_icono_tienda" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tvNombreTienda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Tienda La Bendición"
+                android:textColor="@color/prisma_white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTenderoInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Doña Marta Rodríguez • Cliente FEMSA"
+                android:textColor="#E6F4F1"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvEstadoSuscripcion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/badge_pill_green"
+                android:text="ACTIVO • CLIENTE PREFERENCIAL"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="#065F46"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp" />
+        </LinearLayout>
+
+        <!-- Opciones del Menú Lateral -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OPERACIONES"
+                    android:textColor="@color/prisma_text_secondary"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.08"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Opción 1: Mis Pedidos & PIN -->
+                <LinearLayout
+                    android:id="@+id/drawerOptPedidos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_option_item"
+                    android:padding="14dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_orders" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="14dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mis Pedidos y PIN"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/prisma_text_primary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Estado de entrega y código PIN"
+                            android:textSize="11sp"
+                            android:textColor="@color/prisma_text_secondary" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textSize="20sp"
+                        android:textColor="@color/prisma_text_secondary" />
+                </LinearLayout>
+
+                <!-- Opción 2: Rastrear Camión en Vivo -->
+                <LinearLayout
+                    android:id="@+id/drawerOptRastreo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_option_item"
+                    android:padding="14dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_map_pin" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="14dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rastreo en Tiempo Real"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/prisma_text_primary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ubicación GPS del vehículo"
+                            android:textSize="11sp"
+                            android:textColor="@color/prisma_text_secondary" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textSize="20sp"
+                        android:textColor="@color/prisma_text_secondary" />
+                </LinearLayout>
+
+                <!-- Opción 3: Pedir lo de siempre (1-Clic) -->
+                <LinearLayout
+                    android:id="@+id/drawerOptLoDeSiempre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_option_item"
+                    android:padding="14dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_repeat" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="14dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Repetir Pedido Habitual"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/prisma_text_primary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cargar automáticamente pedido anterior"
+                            android:textSize="11sp"
+                            android:textColor="@color/prisma_text_secondary" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textSize="20sp"
+                        android:textColor="@color/prisma_text_secondary" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Pie del Drawer: Cerrar Sesión y Versión -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="#F8FAFC">
+
+            <LinearLayout
+                android:id="@+id/drawerOptLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/ic_logout"
+                    app:tint="@color/status_red" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="Cerrar Sesión"
+                    android:textColor="@color/status_red"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="12dp"
+                android:text="PRISMA Mobile v1.0 • Red Sabio"
+                android:textSize="10sp"
+                android:textColor="@color/prisma_text_secondary" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

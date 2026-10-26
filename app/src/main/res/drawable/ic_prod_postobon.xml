@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="72dp"
+    android:height="72dp"
+    android:viewportWidth="72"
+    android:viewportHeight="72">
+    <!-- Fondo suave manzana rosa -->
+    <path
+        android:fillColor="#FCE7F3"
+        android:pathData="M12,4 h48 a8,8 0 0,1 8,8 v48 a8,8 0 0,1 -8,8 h-48 a8,8 0 0,1 -8,-8 v-48 a8,8 0 0,1 8,-8 z" />
+    <!-- Tapa rosa -->
+    <path
+        android:fillColor="#BE185D"
+        android:pathData="M32,10 h8 v4 h-8 z" />
+    <!-- Cuello -->
+    <path
+        android:fillColor="#F472B6"
+        android:pathData="M33,14 h6 v6 h-6 z" />
+    <!-- Cuerpo botella Manzana Postobón -->
+    <path
+        android:fillColor="#EC4899"
+        android:pathData="M27,24 c0,-4 4,-4 6,-4 h6 c2,0 6,0 6,4 v32 c0,5 -3,6 -9,6 c-6,0 -9,-1 -9,-6 z" />
+    <!-- Etiqueta magenta oscura -->
+    <path
+        android:fillColor="#9D174D"
+        android:pathData="M27,33 h18 v14 h-18 z" />
+    <!-- Manzanita blanca -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M34,40 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0" />
+    <path
+        android:strokeColor="#A7F3D0"
+        android:strokeWidth="1.2"
+        android:pathData="M37,38 Q39,36 40,37" />
+</vector>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="4dp"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="1dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/prisma_border"
+    app:cardBackgroundColor="@color/prisma_white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <!-- Imagen del Producto Real Oficial PRISMA -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardProductImage"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/prisma_border"
+            app:cardBackgroundColor="#F8FAFC">
+
+            <ImageView
+                android:id="@+id/ivProduct"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="4dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/real_coca_15l" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Información del Producto en Columna Compacta -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical">
+
+            <!-- Badges (Promoción / Lo de siempre) -->
+            <LinearLayout
+                android:id="@+id/layoutBadges"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="3dp">
+
+                <TextView
+                    android:id="@+id/tvPromoBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OFERTA"
+                    android:textSize="9sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/promo_tag_text"
+                    android:background="@drawable/badge_pill_promo"
+                    android:paddingHorizontal="6dp"
+                    android:paddingVertical="2dp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvHabitualBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="HABITUAL"
+                    android:textSize="9sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/frecuente_tag_text"
+                    android:background="@drawable/badge_pill_habitual"
+                    android:paddingHorizontal="6dp"
+                    android:paddingVertical="2dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- Nombre del Producto -->
+            <TextView
+                android:id="@+id/tvProductName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Coca-Cola Sabor Original 1.5L"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="@color/prisma_text_primary"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+            <!-- Presentación / Empaque -->
+            <TextView
+                android:id="@+id/tvPresentation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="Paca x 6 unidades"
+                android:textSize="11sp"
+                android:textColor="@color/prisma_text_secondary"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <!-- Precio Mayorista -->
+            <TextView
+                android:id="@+id/tvWholesalePrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="$28.500 COP"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="@color/prisma_teal_dark" />
+
+        </LinearLayout>
+
+        <!-- Stepper Cantidad Compacto -->
+        <LinearLayout
+            android:id="@+id/layoutStepper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMinus"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:text="-"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:padding="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:textColor="@color/prisma_text_primary"
+                app:strokeColor="@color/prisma_border"
+                app:strokeWidth="1.5dp"
+                app:cornerRadius="8dp" />
+
+            <TextView
+                android:id="@+id/tvQuantity"
+                android:layout_width="26dp"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="@color/prisma_text_primary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPlus"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:text="+"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:padding="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:textColor="@color/prisma_white"
+                app:cornerRadius="8dp"
+                app:backgroundTint="@color/prisma_teal_dark" />
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

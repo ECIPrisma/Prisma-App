@@ -1,0 +1,29 @@
+<resources>
+    <!-- Base application theme configurado en modo luminoso con alto contraste -->
+    <style name="Theme.PRISMA" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/prisma_teal</item>
+        <item name="colorOnPrimary">@color/prisma_white</item>
+        <item name="colorPrimaryContainer">@color/prisma_teal_light</item>
+        <item name="colorOnPrimaryContainer">@color/prisma_teal_dark</item>
+
+        <item name="colorSecondary">@color/prisma_orange</item>
+        <item name="colorOnSecondary">@color/prisma_white</item>
+        <item name="colorSecondaryContainer">@color/prisma_orange_light</item>
+        <item name="colorOnSecondaryContainer">@color/prisma_orange_dark</item>
+
+        <item name="android:colorBackground">@color/prisma_surface</item>
+        <item name="colorOnBackground">@color/prisma_text_primary</item>
+        <item name="colorSurface">@color/prisma_card_bg</item>
+        <item name="colorOnSurface">@color/prisma_text_primary</item>
+        <item name="colorSurfaceVariant">@color/prisma_surface</item>
+        <item name="colorOnSurfaceVariant">@color/prisma_text_secondary</item>
+
+        <item name="android:statusBarColor">@color/prisma_teal_dark</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="Theme.PRISMA.NoActionBar" parent="Theme.PRISMA">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>
