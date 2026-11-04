@@ -7,6 +7,15 @@ android {
     namespace = "com.prisma.mobile"
     compileSdk = 34
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("prisma-release.jks")
+            storePassword = "prisma2026"
+            keyAlias = "prismakey"
+            keyPassword = "prisma2026"
+        }
+    }
+
     defaultConfig {
         applicationId = "com.prisma.mobile"
         minSdk = 24
@@ -16,13 +25,14 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        // Servidor Sabio Oficial Público (Acceso vía 4G/Internet sin VPN)
-        buildConfigField("String", "BASE_URL", "\"https://server-sabio.tail2474b3.ts.net:8443/api/v1/\"")
+        // Servidor Cloud Producción Render
+        buildConfigField("String", "BASE_URL", "\"https://prisma-backend-web.onrender.com/api/v1/\"")
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

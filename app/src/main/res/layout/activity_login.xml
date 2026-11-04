@@ -172,7 +172,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
-                android:text="Servidor: https://server-sabio.tail2474b3.ts.net:8443/api/v1/ (Toca para cambiar)"
+                android:text="Servidor: https://prisma-backend-web.onrender.com/api/v1/ (Toca para cambiar)"
                 android:textSize="11sp"
                 android:textColor="@color/prisma_text_secondary"
                 android:padding="6dp" />
