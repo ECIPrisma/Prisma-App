@@ -72,8 +72,7 @@
                     android:inputType="textEmailAddress"
                     android:textColor="@color/prisma_text_primary"
                     android:textColorHint="@color/prisma_text_secondary"
-                    android:textSize="15sp"
-                    android:text="dona.marta@labendicion.com" />
+                    android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Password Input -->
@@ -100,16 +99,16 @@
                     android:inputType="textPassword"
                     android:textColor="@color/prisma_text_primary"
                     android:textColorHint="@color/prisma_text_secondary"
-                    android:textSize="15sp"
-                    android:text="admin123" />
+                    android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Quick Demo Selectors -->
+            <!-- Quick Demo Selectors (Oculto por seguridad en producción) -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="16dp"
+                android:visibility="gone"
                 android:weightSum="2">
 
                 <com.google.android.material.button.MaterialButton
