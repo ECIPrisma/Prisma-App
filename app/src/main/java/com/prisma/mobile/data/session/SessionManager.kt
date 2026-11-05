@@ -52,8 +52,8 @@ class SessionManager(context: Context) {
 
     fun getServerUrl(): String {
         val saved = prefs.getString(KEY_CUSTOM_SERVER_URL, null)
-        if (saved.isNullOrEmpty() || saved == "https://eciprisma.duckdns.org/api/v1/" || saved.contains("192.168.100.") || saved.contains("10.0.2.2")) {
-            return com.prisma.mobile.util.Constants.SERVER_SABIO_PUBLIC_URL
+        if (saved.isNullOrEmpty() || saved.contains("server-sabio") || saved == "https://eciprisma.duckdns.org/api/v1/" || saved.contains("192.168.100.") || saved.contains("10.0.2.2")) {
+            return com.prisma.mobile.util.Constants.DEFAULT_BASE_URL
         }
         return saved
     }

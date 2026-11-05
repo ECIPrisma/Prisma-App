@@ -73,8 +73,8 @@ class LoginActivity : AppCompatActivity() {
 
     private fun showServerConfigDialog() {
         val options = arrayOf(
-            "Servidor Sabio Público (Acceso 4G/Internet) [Predeterminado]",
-            "Servidor Sabio Red Tailscale",
+            "Servidor Cloud Render (Producción) [Predeterminado]",
+            "Servidor Sabio Público",
             "Emulador Android Local (10.0.2.2:8080)",
             "Red Wi-Fi Local (${Constants.SERVER_WIFI_IP}:8080)",
             "Ingresar URL personalizada..."
@@ -84,8 +84,8 @@ class LoginActivity : AppCompatActivity() {
             .setTitle("Seleccionar Servidor")
             .setItems(options) { _, which ->
                 when (which) {
-                    0 -> applyNewServerUrl(Constants.SERVER_SABIO_PUBLIC_URL)
-                    1 -> applyNewServerUrl(Constants.SERVER_SABIO_VPN_URL)
+                    0 -> applyNewServerUrl(Constants.SERVER_RENDER_PUBLIC_URL)
+                    1 -> applyNewServerUrl(Constants.SERVER_SABIO_PUBLIC_URL)
                     2 -> applyNewServerUrl(Constants.EMULATOR_BASE_URL)
                     3 -> applyNewServerUrl(Constants.WIFI_BASE_URL)
                     4 -> promptCustomServerUrl()
