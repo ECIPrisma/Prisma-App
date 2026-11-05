@@ -39,7 +39,8 @@ data class ItemPedidoRequest(
 
 data class CrearPedidoRequest(
     @SerializedName("proveedorId") val proveedorId: Long = 1L,
-    @SerializedName("items") val items: List<ItemPedidoRequest>
+    @SerializedName("items") val items: List<ItemPedidoRequest>,
+    @SerializedName("idempotencyKey") val idempotencyKey: String? = java.util.UUID.randomUUID().toString()
 )
 
 data class ConfirmarEntregaRequest(

@@ -62,6 +62,42 @@ class SessionManager(context: Context) {
         prefs.edit().putString(KEY_CUSTOM_SERVER_URL, url).apply()
     }
 
+    fun saveOfflineCatalog(productos: List<com.prisma.mobile.data.model.ProductoDto>) {
+        val json = com.google.gson.Gson().toJson(productos)
+        prefs.edit().putString(KEY_OFFLINE_CATALOG, json).apply()
+    }
+
+    fun getOfflineCatalog(): List<com.prisma.mobile.data.model.ProductoDto> {
+        val json = prefs.getString(KEY_OFFLINE_CATALOG, null) ?: return emptyList()
+        return try {
+            val type = object : com.google.gson.reflect.TypeToken<List<com.prisma.mobile.data.model.ProductoDto>>() {}.type
+            com.google.gson.Gson().fromJson(json, type) ?: emptyList()
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
+
+    fun enqueueOfflineOrder(order: com.prisma.mobile.data.model.CrearPedidoRequest) {
+        val actuales = getPendingOfflineOrders().toMutableList()
+        actuales.add(order)
+        val json = com.google.gson.Gson().toJson(actuales)
+        prefs.edit().putString(KEY_OFFLINE_ORDERS, json).apply()
+    }
+
+    fun getPendingOfflineOrders(): List<com.prisma.mobile.data.model.CrearPedidoRequest> {
+        val json = prefs.getString(KEY_OFFLINE_ORDERS, null) ?: return emptyList()
+        return try {
+            val type = object : com.google.gson.reflect.TypeToken<List<com.prisma.mobile.data.model.CrearPedidoRequest>>() {}.type
+            com.google.gson.Gson().fromJson(json, type) ?: emptyList()
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
+
+    fun clearPendingOfflineOrders() {
+        prefs.edit().remove(KEY_OFFLINE_ORDERS).apply()
+    }
+
     companion object {
         private const val KEY_TOKEN = "jwt_token"
         private const val KEY_USER_ID = "user_id"
@@ -70,5 +106,7 @@ class SessionManager(context: Context) {
         private const val KEY_ROLE = "user_role"
         private const val KEY_PROVEEDOR_ID = "proveedor_id"
         private const val KEY_CUSTOM_SERVER_URL = "custom_server_url"
+        private const val KEY_OFFLINE_CATALOG = "offline_catalog_cache"
+        private const val KEY_OFFLINE_ORDERS = "offline_orders_queue"
     }
 }

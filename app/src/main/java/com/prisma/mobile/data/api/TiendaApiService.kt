@@ -33,4 +33,12 @@ interface TiendaApiService {
         @Path("pedidoId") pedidoId: Long,
         @Body request: ReportarAveriaRequest
     ): Response<ApiResponse<Map<String, Any>>>
+
+    @POST("notificaciones/fcm-token")
+    suspend fun registrarFcmToken(
+        @Body request: Map<String, String>
+    ): Response<ApiResponse<Map<String, Any>>>
+
+    @GET("notificaciones/mis-notificaciones")
+    suspend fun getMisNotificaciones(): Response<ApiResponse<List<Map<String, Any>>>>
 }
