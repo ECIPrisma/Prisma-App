@@ -168,7 +168,7 @@ class MisPedidosActivity : AppCompatActivity() {
             holder.binding.tvPagoBadge.setTextColor(ContextCompat.getColor(ctx, colorTexto))
             holder.binding.tvPagoDetalle.text = when {
                 ped.pagadoEnLinea -> ped.detallePago ?: ""
-                ped.estadoPago == EstadoPago.RECHAZADO && ped.admitePagoEnLinea -> "Intenta con otro medio"
+                ped.estadoPago == EstadoPago.RECHAZADO && ped.admitePagoEnLinea -> "Confirmado • sin garantía de pago"
                 else -> "Efectivo al recibir"
             }
             holder.binding.btnPagarEnLinea.visibility = if (ped.admitePagoEnLinea) View.VISIBLE else View.GONE

@@ -29,6 +29,7 @@ data class PedidoDto(
 }
 
 object EstadoPago {
+    const val PENDIENTE = "PENDIENTE"
     const val EN_GARANTIA = "EN_GARANTIA"
     const val RECHAZADO = "RECHAZADO"
     const val LIBERADO = "LIBERADO"
@@ -55,6 +56,12 @@ data class PagoPedidoDto(
     @SerializedName("medio") val medio: String,
     @SerializedName("detalleMedio") val detalleMedio: String,
     @SerializedName("monto") val monto: Double,
+    // HU-13: división del pago (3.5% PRISMA / 96.5% proveedor) y tarifa de la pasarela aparte
+    @SerializedName("porcentajeComision") val porcentajeComision: Double? = null,
+    @SerializedName("comisionPrisma") val comisionPrisma: Double? = null,
+    @SerializedName("montoProveedor") val montoProveedor: Double? = null,
+    @SerializedName("tarifaPasarela") val tarifaPasarela: Double? = null,
+    @SerializedName("confirmadoPorWebhook") val confirmadoPorWebhook: Boolean = false,
     @SerializedName("estado") val estado: String,
     @SerializedName("aprobado") val aprobado: Boolean,
     @SerializedName("motivoRechazo") val motivoRechazo: String?,

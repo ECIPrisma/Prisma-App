@@ -35,6 +35,9 @@ class PagoActivity : AppCompatActivity() {
         const val EXTRA_NUMERO_PEDIDO = "extra_numero_pedido"
         const val EXTRA_TOTAL = "extra_total"
 
+        /** HU-13 criterio 2: mensaje exacto cuando la entidad financiera rechaza el pago. */
+        const val MENSAJE_PAGO_RECHAZADO = "El pago no pudo ser procesado, intenta con otro medio"
+
         private val BANCOS = listOf(
             "Bancolombia", "Banco de Bogotá", "Davivienda", "BBVA Colombia", "Banco de Occidente",
             "Banco Popular", "Banco Caja Social", "Nu Colombia", "Banco que aprueba", "Banco que rechaza"
@@ -251,6 +254,14 @@ class PagoActivity : AppCompatActivity() {
             appendLine("Medio       ${pago.detalleMedio}")
             appendLine("Referencia  ${pago.referencia}")
             append("Transacción ${pago.transaccionId}")
+            // HU-13: un solo pago del tendero, dividido por la pasarela
+            if (pago.aprobado && pago.comisionPrisma != null && pago.montoProveedor != null) {
+                appendLine()
+                appendLine()
+                appendLine("División del pago")
+                appendLine("Proveedor   ${fmt.format(pago.montoProveedor)} (96.5%)")
+                append("PRISMA      ${fmt.format(pago.comisionPrisma)} (3.5%)")
+            }
         }
         binding.tvDetalleResultado.text = detalle
 
@@ -273,8 +284,9 @@ class PagoActivity : AppCompatActivity() {
             binding.tvIconoResultado.setTextColor(ContextCompat.getColor(this, R.color.status_red))
             binding.tvIconoResultado.background = ContextCompat.getDrawable(this, R.drawable.bg_circle_error)
             binding.tvTituloResultado.text = "Pago rechazado"
+            // HU-13 criterio 2: mensaje exacto; el pedido sigue "Confirmado" sin garantía de pago
             binding.tvMensajeResultado.text =
-                "${pago.motivoRechazo ?: "La transacción no fue aprobada"}.\nTu pedido sigue activo: puedes intentar con otro medio o pagar contra entrega."
+                "$MENSAJE_PAGO_RECHAZADO.\n${pago.motivoRechazo ?: ""}\nTu pedido sigue confirmado, sin garantía de pago."
             binding.tvEstadoPagoBadge.text = "RECHAZADO"
             binding.tvEstadoPagoBadge.background = ContextCompat.getDrawable(this, R.drawable.badge_pill_red)
             binding.tvEstadoPagoBadge.setTextColor(ContextCompat.getColor(this, R.color.status_red_text))
