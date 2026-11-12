@@ -119,7 +119,7 @@ class PagoActivity : AppCompatActivity() {
         binding.formTarjeta.visibility = if (nuevo == Medio.TARJETA) View.VISIBLE else View.GONE
 
         binding.tvDatosPrueba.text = when (nuevo) {
-            Medio.NEQUI -> "Aprobado: 399 111 1111\nRechazado: 399 222 2222"
+            Medio.NEQUI -> "Aprobado: 399 111 1111\nRechazado: 399 222 2222\nPasarela caída (circuit breaker): 399 333 3333"
             Medio.PSE -> "Aprobado: cualquier banco o \"Banco que aprueba\"\nRechazado: \"Banco que rechaza\""
             Medio.TARJETA -> "Aprobada: 4242 4242 4242 4242\nRechazada: 4111 1111 1111 1111\nCualquier fecha futura y cualquier CVV"
         }
@@ -214,8 +214,14 @@ class PagoActivity : AppCompatActivity() {
                     mostrarResultado(pago)
                 } else {
                     mostrarProcesando(false)
-                    mostrarErrorServidor(extraerMensaje(respuesta.errorBody()?.string())
-                        ?: "No se pudo procesar el pago, intenta nuevamente")
+                    val mensaje = extraerMensaje(respuesta.errorBody()?.string())
+                        ?: "No se pudo procesar el pago, intenta nuevamente"
+                    if (respuesta.code() == 503) {
+                        // HU-19: pasarela caída o circuito abierto -> ofrecer pagar contra entrega
+                        mostrarServicioNoDisponible(mensaje)
+                    } else {
+                        mostrarErrorServidor(mensaje)
+                    }
                 }
             } catch (e: Exception) {
                 mostrarProcesando(false)
@@ -232,6 +238,16 @@ class PagoActivity : AppCompatActivity() {
 
     private fun mostrarErrorServidor(mensaje: String) {
         com.google.android.material.snackbar.Snackbar.make(binding.root, mensaje, com.google.android.material.snackbar.Snackbar.LENGTH_LONG).show()
+    }
+
+    /** HU-19: el servicio de pagos no está disponible; el pedido sigue activo y puede pagarse contra entrega. */
+    private fun mostrarServicioNoDisponible(mensaje: String) {
+        androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle(mensaje)
+            .setMessage("Tu pedido sigue activo. Puedes intentar el pago en línea en unos minutos o pagar en efectivo contra entrega.")
+            .setPositiveButton("Pagar contra entrega") { _, _ -> irAMisPedidos() }
+            .setNegativeButton("Intentar más tarde", null)
+            .show()
     }
 
     private fun extraerMensaje(json: String?): String? = try {
