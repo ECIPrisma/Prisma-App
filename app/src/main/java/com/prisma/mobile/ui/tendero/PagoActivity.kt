@@ -272,7 +272,7 @@ class PagoActivity : AppCompatActivity() {
             binding.tvTituloResultado.text = "¡Pago aprobado!"
             binding.tvMensajeResultado.text =
                 "Tu dinero queda en garantía. El proveedor lo recibe cuando confirmes la entrega con tu PIN."
-            binding.tvEstadoPagoBadge.text = if (pago.estado == EstadoPago.LIBERADO) "PAGADO • LIBERADO" else "PAGADO • EN GARANTÍA"
+            binding.tvEstadoPagoBadge.text = if (pago.estado == EstadoPago.LIBERADO) "PAGADO • LIBERADO" else "PAGO CONFIRMADO • EN GARANTÍA"
             binding.tvEstadoPagoBadge.background = ContextCompat.getDrawable(this, R.drawable.badge_pill_green)
             binding.tvEstadoPagoBadge.setTextColor(ContextCompat.getColor(this, R.color.status_green_text))
 

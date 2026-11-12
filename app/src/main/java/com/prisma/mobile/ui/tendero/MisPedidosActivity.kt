@@ -157,7 +157,7 @@ class MisPedidosActivity : AppCompatActivity() {
                 ped.estadoPago == EstadoPago.LIBERADO ->
                     Triple("PAGADO • LIBERADO AL PROVEEDOR", R.drawable.badge_pill_green, R.color.status_green_text)
                 ped.estadoPago == EstadoPago.EN_GARANTIA ->
-                    Triple("PAGADO • EN GARANTÍA", R.drawable.badge_pill_green, R.color.status_green_text)
+                    Triple("PAGO CONFIRMADO • EN GARANTÍA", R.drawable.badge_pill_green, R.color.status_green_text)
                 ped.estadoPago == EstadoPago.RECHAZADO && ped.admitePagoEnLinea ->
                     Triple("PAGO RECHAZADO", R.drawable.badge_pill_red, R.color.status_red_text)
                 else ->
