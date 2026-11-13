@@ -216,17 +216,23 @@ class CatalogoActivity : AppCompatActivity() {
 
     private fun mostrarDialogoCheckout(items: Map<Long, Int>) {
         val totalItems = items.values.sum()
+        // N-08: el tendero elige pagar en línea (pasarela simulada) o en efectivo contra entrega
+        val opciones = arrayOf(
+            "Pagar en línea ahora (Nequi, PSE o tarjeta)",
+            "Efectivo contra entrega en mostrador"
+        )
+        var seleccion = 0
         AlertDialog.Builder(this)
-            .setTitle("Confirmar Pedido")
-            .setMessage("Vas a solicitar $totalItems unidades para despacho en la próxima ruta programada.\n\nPago: Efectivo contra entrega en mostrador.\n\n¿Deseas radicar el pedido?")
+            .setTitle("Confirmar Pedido • $totalItems unidades")
+            .setSingleChoiceItems(opciones, seleccion) { _, which -> seleccion = which }
             .setPositiveButton("Confirmar Pedido") { _, _ ->
-                enviarPedido(items)
+                enviarPedido(items, pagarEnLinea = seleccion == 0)
             }
             .setNegativeButton("Seguir comprando", null)
             .show()
     }
 
-    private fun enviarPedido(items: Map<Long, Int>) {
+    private fun enviarPedido(items: Map<Long, Int>, pagarEnLinea: Boolean = false) {
         val requestList = items.map { ItemPedidoRequest(it.key, it.value) }
         val pedidoReq = CrearPedidoRequest(1L, requestList, java.util.UUID.randomUUID().toString())
         lifecycleScope.launch {
@@ -235,8 +241,13 @@ class CatalogoActivity : AppCompatActivity() {
                 if (response.isSuccessful && response.body()?.exitoso == true) {
                     val ped = response.body()?.datos
                     Toast.makeText(this@CatalogoActivity, "Pedido #${ped?.numeroPedido} generado con éxito", Toast.LENGTH_LONG).show()
-                    // Redirigir a Mis Pedidos para ver su PIN
-                    startActivity(Intent(this@CatalogoActivity, MisPedidosActivity::class.java))
+                    if (pagarEnLinea && ped != null) {
+                        // Ir al checkout en línea (pasarela simulada)
+                        startActivity(PagoActivity.intent(this@CatalogoActivity, ped.id, ped.numeroPedido, ped.totalAPagar))
+                    } else {
+                        // Redirigir a Mis Pedidos para ver su PIN
+                        startActivity(Intent(this@CatalogoActivity, MisPedidosActivity::class.java))
+                    }
                 } else {
                     Toast.makeText(this@CatalogoActivity, "No se pudo procesar el pedido", Toast.LENGTH_LONG).show()
                 }
@@ -244,7 +255,11 @@ class CatalogoActivity : AppCompatActivity() {
                 sessionManager.enqueueOfflineOrder(pedidoReq)
                 Toast.makeText(
                     this@CatalogoActivity,
-                    "Sin señal: Pedido guardado localmente con Idempotency-Key y se enviará al recuperar conexión",
+                    if (pagarEnLinea) {
+                        "Sin señal: Pedido guardado localmente. Cuando se sincronice podrás pagarlo en línea desde Mis Pedidos"
+                    } else {
+                        "Sin señal: Pedido guardado localmente con Idempotency-Key y se enviará al recuperar conexión"
+                    },
                     Toast.LENGTH_LONG
                 ).show()
             }

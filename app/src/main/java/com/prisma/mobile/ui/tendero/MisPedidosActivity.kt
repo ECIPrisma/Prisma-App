@@ -2,7 +2,11 @@ package com.prisma.mobile.ui.tendero
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import com.prisma.mobile.R
+import com.prisma.mobile.data.model.EstadoPago
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -146,6 +150,34 @@ class MisPedidosActivity : AppCompatActivity() {
                 "Productos solicitados: Coca-Cola y Manantial"
             }
             holder.binding.tvOrderProducts.text = itemsTexto
+
+            // N-08: estado del pago en línea (pasarela simulada)
+            val ctx = holder.itemView.context
+            val (textoBadge, fondo, colorTexto) = when {
+                ped.estadoPago == EstadoPago.LIBERADO ->
+                    Triple("PAGADO • LIBERADO AL PROVEEDOR", R.drawable.badge_pill_green, R.color.status_green_text)
+                ped.estadoPago == EstadoPago.EN_GARANTIA ->
+                    Triple("PAGO CONFIRMADO • EN GARANTÍA", R.drawable.badge_pill_green, R.color.status_green_text)
+                ped.estadoPago == EstadoPago.REEMBOLSADO ->
+                    Triple("PAGO REEMBOLSADO", R.drawable.badge_pill_habitual, R.color.prisma_text_secondary)
+                ped.estadoPago == EstadoPago.RECHAZADO && ped.admitePagoEnLinea ->
+                    Triple("PAGO RECHAZADO", R.drawable.badge_pill_red, R.color.status_red_text)
+                else ->
+                    Triple("CONTRA ENTREGA", R.drawable.badge_pill_promo, R.color.promo_tag_text)
+            }
+            holder.binding.tvPagoBadge.text = textoBadge
+            holder.binding.tvPagoBadge.background = ContextCompat.getDrawable(ctx, fondo)
+            holder.binding.tvPagoBadge.setTextColor(ContextCompat.getColor(ctx, colorTexto))
+            holder.binding.tvPagoDetalle.text = when {
+                ped.pagadoEnLinea -> ped.detallePago ?: ""
+                ped.estadoPago == EstadoPago.REEMBOLSADO -> "Pedido cancelado • te devolvimos el pago"
+                ped.estadoPago == EstadoPago.RECHAZADO && ped.admitePagoEnLinea -> "Confirmado • sin garantía de pago"
+                else -> "Efectivo al recibir"
+            }
+            holder.binding.btnPagarEnLinea.visibility = if (ped.admitePagoEnLinea) View.VISIBLE else View.GONE
+            holder.binding.btnPagarEnLinea.setOnClickListener {
+                startActivity(PagoActivity.intent(this@MisPedidosActivity, ped.id, ped.numeroPedido, ped.totalAPagar))
+            }
 
             holder.binding.btnReportAveria.setOnClickListener {
                 mostrarDialogoReportarAveria(ped)

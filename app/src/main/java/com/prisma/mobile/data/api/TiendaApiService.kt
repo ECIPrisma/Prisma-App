@@ -25,6 +25,13 @@ interface TiendaApiService {
         @Body request: CrearPedidoRequest
     ): Response<ApiResponse<PedidoDto>>
 
+    // N-08: checkout en línea con la pasarela simulada (sandbox tipo Wompi)
+    @POST("tiendas/pedidos/{pedidoId}/pago")
+    suspend fun pagarPedido(
+        @Path("pedidoId") pedidoId: Long,
+        @Body request: PagarPedidoRequest
+    ): Response<ApiResponse<PagoPedidoDto>>
+
     @POST("tiendas/pedidos/repetir-ultimo")
     suspend fun repetirUltimoPedido(): Response<ApiResponse<PedidoDto>>
 

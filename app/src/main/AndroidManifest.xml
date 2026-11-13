@@ -59,6 +59,13 @@
             android:exported="false"
             android:theme="@style/Theme.PRISMA.NoActionBar" />
 
+        <!-- N-08: Checkout en línea con pasarela simulada (Tendero) -->
+        <activity
+            android:name=".ui.tendero.PagoActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/Theme.PRISMA.NoActionBar" />
+
         <!-- Rastreo GPS Low-Cost OSMDroid (Tendero) -->
         <activity
             android:name=".ui.tendero.RastreoCamionActivity"
