@@ -33,6 +33,8 @@ object EstadoPago {
     const val EN_GARANTIA = "EN_GARANTIA"
     const val RECHAZADO = "RECHAZADO"
     const val LIBERADO = "LIBERADO"
+    /** El pedido pagado se canceló o rechazó antes de la entrega: el dinero volvió al tendero. */
+    const val REEMBOLSADO = "REEMBOLSADO"
 }
 
 /** Cuerpo del checkout simulado. El CVV nunca se envía al servidor. */

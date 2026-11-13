@@ -37,6 +37,13 @@ class PagoEnLineaModelTest {
     }
 
     @Test
+    fun pagoReembolsadoNoCuentaComoPagadoNiAdmiteNuevoPago() {
+        val p = pedido("CANCELADO", EstadoPago.REEMBOLSADO)
+        assertFalse(p.pagadoEnLinea)
+        assertFalse(p.admitePagoEnLinea)
+    }
+
+    @Test
     fun pedidoEntregadoNoAdmitePago() {
         assertFalse(pedido("ENTREGADO", null).admitePagoEnLinea)
         assertTrue(pedido("ENTREGADO", EstadoPago.LIBERADO).pagadoEnLinea)
