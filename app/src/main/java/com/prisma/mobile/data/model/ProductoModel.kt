@@ -10,6 +10,7 @@ data class ProductoDto(
     @SerializedName("precioUnitario") val precioUnitario: Double,
     @SerializedName("precioSugeridoPublico") val precioSugeridoPublico: Double?,
     @SerializedName("stockDisponible") val stockDisponible: Int,
+    @SerializedName("cantidadMinimaPedido") val cantidadMinimaPedido: Int = 1,
     @SerializedName("esPromocion") val esPromocion: Boolean = false,
     @SerializedName("esHabitual") val esHabitual: Boolean = false,
     @SerializedName("imagenUrl") val imagenUrl: String?

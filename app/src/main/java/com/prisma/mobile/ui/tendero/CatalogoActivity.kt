@@ -28,7 +28,39 @@ class CatalogoActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupUI()
+        registrarTokenPushFcm()
         cargarCatalogo()
+    }
+
+    private fun registrarTokenPushFcm() {
+        lifecycleScope.launch {
+            try {
+                val deviceFcmToken = "fcm_android_${android.os.Build.MODEL}_${sessionManager.getUserName().hashCode()}"
+                ApiClient.tiendaService.registrarFcmToken(mapOf("fcmToken" to deviceFcmToken))
+            } catch (_: Exception) {
+                // Silencioso en modo offline
+            }
+        }
+    }
+
+    private suspend fun sincronizarPedidosOffline() {
+        val pendientes = sessionManager.getPendingOfflineOrders()
+        if (pendientes.isEmpty()) return
+        var todosSincronizados = true
+        for (req in pendientes) {
+            try {
+                val resp = ApiClient.tiendaService.crearPedido(req)
+                if (!resp.isSuccessful) {
+                    todosSincronizados = false
+                }
+            } catch (_: Exception) {
+                todosSincronizados = false
+            }
+        }
+        if (todosSincronizados) {
+            sessionManager.clearPendingOfflineOrders()
+            Toast.makeText(this, "Pedidos pendientes offline sincronizados con éxito", Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun setupUI() {
@@ -157,15 +189,28 @@ class CatalogoActivity : AppCompatActivity() {
                         val promo = prod.precioSugeridoPublico != null && prod.precioSugeridoPublico > prod.precioUnitario
                         prod.copy(esHabitual = habitual, esPromocion = promo)
                     }
+                    sessionManager.saveOfflineCatalog(listaOriginalProductos)
                     adapter.setProductos(listaOriginalProductos)
+                    sincronizarPedidosOffline()
                 } else {
-                    Toast.makeText(this@CatalogoActivity, "Error al cargar catálogo", Toast.LENGTH_SHORT).show()
+                    cargarDesdeCacheOffline()
                 }
             } catch (e: Exception) {
-                Toast.makeText(this@CatalogoActivity, "Error de red: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+                cargarDesdeCacheOffline()
             } finally {
                 binding.swipeRefresh.isRefreshing = false
             }
+        }
+    }
+
+    private fun cargarDesdeCacheOffline() {
+        val cached = sessionManager.getOfflineCatalog()
+        if (cached.isNotEmpty()) {
+            listaOriginalProductos = cached
+            adapter.setProductos(cached)
+            Toast.makeText(this, "Modo sin conexión: mostrando catálogo almacenado localmente", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(this, "No hay datos disponibles sin conexión, intenta cuando recuperes señal", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -183,9 +228,10 @@ class CatalogoActivity : AppCompatActivity() {
 
     private fun enviarPedido(items: Map<Long, Int>) {
         val requestList = items.map { ItemPedidoRequest(it.key, it.value) }
+        val pedidoReq = CrearPedidoRequest(1L, requestList, java.util.UUID.randomUUID().toString())
         lifecycleScope.launch {
             try {
-                val response = ApiClient.tiendaService.crearPedido(CrearPedidoRequest(1L, requestList))
+                val response = ApiClient.tiendaService.crearPedido(pedidoReq)
                 if (response.isSuccessful && response.body()?.exitoso == true) {
                     val ped = response.body()?.datos
                     Toast.makeText(this@CatalogoActivity, "Pedido #${ped?.numeroPedido} generado con éxito", Toast.LENGTH_LONG).show()
@@ -195,7 +241,12 @@ class CatalogoActivity : AppCompatActivity() {
                     Toast.makeText(this@CatalogoActivity, "No se pudo procesar el pedido", Toast.LENGTH_LONG).show()
                 }
             } catch (e: Exception) {
-                Toast.makeText(this@CatalogoActivity, "Error de conexión: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
+                sessionManager.enqueueOfflineOrder(pedidoReq)
+                Toast.makeText(
+                    this@CatalogoActivity,
+                    "Sin señal: Pedido guardado localmente con Idempotency-Key y se enviará al recuperar conexión",
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
     }

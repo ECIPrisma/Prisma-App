@@ -5,13 +5,16 @@ object Constants {
     const val SERVER_WIFI_IP = "192.168.100.9"
     const val SERVER_PORT = "8080"
 
+    // Servidor Cloud Producción (Render + Neon PostgreSQL)
+    const val SERVER_RENDER_PUBLIC_URL = "https://prisma-backend-web.onrender.com/api/v1/"
+
     // Servidor Sabio Público (funciona con datos 4G/LTE desde cualquier red sin VPN)
     const val SERVER_SABIO_PUBLIC_URL = "https://server-sabio.tail2474b3.ts.net:8443/api/v1/"
     // Servidor Sabio vía DuckDNS (requiere app Tailscale activa en el celular)
     const val SERVER_SABIO_VPN_URL = "https://eciprisma.duckdns.org/api/v1/"
 
-    const val DEFAULT_BASE_URL = SERVER_SABIO_PUBLIC_URL
-    const val CLOUD_BASE_URL = SERVER_SABIO_PUBLIC_URL
+    const val DEFAULT_BASE_URL = SERVER_RENDER_PUBLIC_URL
+    const val CLOUD_BASE_URL = SERVER_RENDER_PUBLIC_URL
     const val SERVER_SABIO_URL = SERVER_SABIO_PUBLIC_URL
 
     // URLs locales opcionales

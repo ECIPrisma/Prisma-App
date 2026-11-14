@@ -38,10 +38,11 @@ class ProductoAdapter(
     inner class ProductoViewHolder(private val binding: ItemProductoBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(prod: ProductoDto) {
             binding.tvProductName.text = prod.nombre
-            binding.tvPresentation.text = prod.presentacion
+            val agotado = prod.stockDisponible <= 0
+            binding.tvPresentation.text = if (agotado) "${prod.presentacion} • Agotado" else prod.presentacion
 
             val formatoPesos = NumberFormat.getCurrencyInstance(Locale("es", "CO"))
-            binding.tvWholesalePrice.text = "${formatoPesos.format(prod.precioUnitario)} COP"
+            binding.tvWholesalePrice.text = if (agotado) "Agotado" else "${formatoPesos.format(prod.precioUnitario)} COP"
 
             // Asignación de imagen fotográfica real de los productos de supermercado
             val resId = when {
@@ -73,8 +74,14 @@ class ProductoAdapter(
             val cantActual = cantidades[prod.id] ?: 0
             binding.tvQuantity.text = cantActual.toString()
 
+            binding.btnPlus.isEnabled = !agotado
+            binding.btnPlus.alpha = if (agotado) 0.4f else 1.0f
+
             binding.btnPlus.setOnClickListener {
-                val nueva = (cantidades[prod.id] ?: 0) + 1
+                if (agotado) return@setOnClickListener
+                val actual = cantidades[prod.id] ?: 0
+                val minReq = if (prod.cantidadMinimaPedido > 0) prod.cantidadMinimaPedido else 1
+                val nueva = if (actual == 0) minReq else actual + 1
                 cantidades[prod.id] = nueva
                 binding.tvQuantity.text = nueva.toString()
                 onQuantityChanged(prod, nueva)
