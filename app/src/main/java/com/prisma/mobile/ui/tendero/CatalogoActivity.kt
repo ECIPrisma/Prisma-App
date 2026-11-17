@@ -216,6 +216,16 @@ class CatalogoActivity : AppCompatActivity() {
 
     private fun mostrarDialogoCheckout(items: Map<Long, Int>) {
         val totalItems = items.values.sum()
+        if (!com.prisma.mobile.util.Constants.PAGO_EN_LINEA_TENDERO_HABILITADO) {
+            // MVP: el tendero paga como siempre, en efectivo contra entrega
+            AlertDialog.Builder(this)
+                .setTitle("Confirmar Pedido")
+                .setMessage("Vas a solicitar $totalItems unidades para despacho en la próxima ruta programada.\n\nPago: Efectivo contra entrega en mostrador.\n\n¿Deseas radicar el pedido?")
+                .setPositiveButton("Confirmar Pedido") { _, _ -> enviarPedido(items) }
+                .setNegativeButton("Seguir comprando", null)
+                .show()
+            return
+        }
         // N-08: el tendero elige pagar en línea (pasarela simulada) o en efectivo contra entrega
         val opciones = arrayOf(
             "Pagar en línea ahora (Nequi, PSE o tarjeta)",

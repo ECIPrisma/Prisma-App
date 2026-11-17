@@ -174,7 +174,9 @@ class MisPedidosActivity : AppCompatActivity() {
                 ped.estadoPago == EstadoPago.RECHAZADO && ped.admitePagoEnLinea -> "Confirmado • sin garantía de pago"
                 else -> "Efectivo al recibir"
             }
-            holder.binding.btnPagarEnLinea.visibility = if (ped.admitePagoEnLinea) View.VISIBLE else View.GONE
+            // MVP: el botón de pago en línea solo aparece si el checkout del tendero está habilitado
+            val mostrarPagoEnLinea = com.prisma.mobile.util.Constants.PAGO_EN_LINEA_TENDERO_HABILITADO && ped.admitePagoEnLinea
+            holder.binding.btnPagarEnLinea.visibility = if (mostrarPagoEnLinea) View.VISIBLE else View.GONE
             holder.binding.btnPagarEnLinea.setOnClickListener {
                 startActivity(PagoActivity.intent(this@MisPedidosActivity, ped.id, ped.numeroPedido, ped.totalAPagar))
             }

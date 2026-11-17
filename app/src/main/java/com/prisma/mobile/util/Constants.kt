@@ -49,4 +49,11 @@ object Constants {
     const val ROLE_PROVEEDOR = "ROLE_PROVEEDOR"
     const val ROLE_REPARTIDOR = "ROLE_REPARTIDOR"
     const val ROLE_TENDERO = "ROLE_TENDERO"
+
+    /**
+     * MVP: los tenderos siguen pagando sus pedidos como siempre (efectivo contra entrega); quien paga en línea
+     * a PRISMA es el distribuidor (suscripción Prisma Pro, desde la web). El checkout del tendero (PagoActivity)
+     * se conserva pero queda oculto. Cambiar a true para volver a mostrarlo.
+     */
+    const val PAGO_EN_LINEA_TENDERO_HABILITADO = false
 }
