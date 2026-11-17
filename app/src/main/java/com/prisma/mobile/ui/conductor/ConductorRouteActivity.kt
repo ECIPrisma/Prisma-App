@@ -161,7 +161,8 @@ class ConductorRouteActivity : AppCompatActivity() {
                     if (primeraPendiente != null) {
                         pedidoSeleccionadoId = primeraPendiente.id
                         val fmt = NumberFormat.getCurrencyInstance(Locale("es", "CO"))
-                        binding.tvSelectedStopInfo.text = "Parada #${primeraPendiente.ordenParada}: ${primeraPendiente.tienda?.nombreTienda ?: "Tienda"} • ${fmt.format(primeraPendiente.totalAPagar)} COP"
+                        val cobro = if (primeraPendiente.pagadoEnLinea) "Pagado en línea" else "${fmt.format(primeraPendiente.totalAPagar)} COP"
+                        binding.tvSelectedStopInfo.text = "Parada #${primeraPendiente.ordenParada}: ${primeraPendiente.tienda?.nombreTienda ?: "Tienda"} • $cobro"
                     }
                 }
             } catch (e: Exception) {
@@ -320,7 +321,12 @@ class ConductorRouteActivity : AppCompatActivity() {
             holder.binding.tvStoreAddress.text = ped.tienda?.direccion ?: "Dirección"
 
             val fmt = NumberFormat.getCurrencyInstance(Locale("es", "CO"))
-            holder.binding.tvCashAmount.text = "Cobro: ${fmt.format(ped.totalAPagar)} COP"
+            // N-08: si el tendero pagó en línea, el conductor no debe cobrar en efectivo
+            holder.binding.tvCashAmount.text = if (ped.pagadoEnLinea) {
+                "Pagado en línea • No cobrar"
+            } else {
+                "Cobro: ${fmt.format(ped.totalAPagar)} COP"
+            }
 
             holder.binding.tvStopStatus.text = ped.estado
 

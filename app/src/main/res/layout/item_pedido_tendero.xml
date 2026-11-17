@@ -45,6 +45,39 @@
                 android:paddingVertical="3dp" />
         </LinearLayout>
 
+        <!-- N-08: estado del pago (en línea en garantía / contra entrega / rechazado) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvPagoBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/badge_pill_green"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="3dp"
+                android:text="PAGADO • EN GARANTÍA"
+                android:textColor="@color/status_green_text"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvPagoDetalle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Nequi ••• 1111"
+                android:textColor="@color/prisma_text_secondary"
+                android:textSize="11sp" />
+        </LinearLayout>
+
         <!-- PIN Digital de Entrega visible al tendero -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -101,6 +134,20 @@
                 android:textSize="13sp"
                 android:textStyle="bold"
                 android:textColor="@color/prisma_teal_dark" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPagarEnLinea"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginEnd="6dp"
+                android:backgroundTint="@color/prisma_teal"
+                android:paddingHorizontal="10dp"
+                android:text="Pagar en línea"
+                android:textColor="@color/prisma_white"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:cornerRadius="8dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnReportAveria"
