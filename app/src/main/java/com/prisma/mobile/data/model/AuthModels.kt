@@ -11,7 +11,8 @@ data class ApiResponse<T>(
 
 data class LoginRequest(
     @SerializedName("email") val email: String,
-    @SerializedName("password") val password: String
+    @SerializedName("password") val password: String,
+    @SerializedName("codigoTotp") val codigoTotp: String? = null
 )
 
 data class AuthResponse(

@@ -41,12 +41,18 @@ class LoginActivity : AppCompatActivity() {
         binding.btnQuickTendero.setOnClickListener {
             binding.etEmail.setText("dona.marta@labendicion.com")
             binding.etPassword.setText("admin123")
+            binding.tilTotp.visibility = View.GONE
+            binding.tilTotp.error = null
+            binding.btnLogin.text = "INGRESAR A PRISMA"
         }
 
         // Botón rápido para rol Conductor
         binding.btnQuickConductor.setOnClickListener {
             binding.etEmail.setText("conductor.juan@femsa.com.co")
             binding.etPassword.setText("admin123")
+            binding.tilTotp.visibility = View.GONE
+            binding.tilTotp.error = null
+            binding.btnLogin.text = "INGRESAR A PRISMA"
         }
 
         // Diálogo para cambiar la IP/URL del servidor fácilmente
@@ -57,13 +63,28 @@ class LoginActivity : AppCompatActivity() {
         binding.btnLogin.setOnClickListener {
             val email = binding.etEmail.text.toString().trim()
             val password = binding.etPassword.text.toString().trim()
+            val totpCode = if (binding.tilTotp.visibility == View.VISIBLE) {
+                binding.etTotp.text.toString().trim()
+            } else {
+                null
+            }
 
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Por favor complete todos los campos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            executeLogin(email, password)
+            if (binding.tilTotp.visibility == View.VISIBLE) {
+                if (totpCode.isNullOrEmpty() || totpCode.length != 6) {
+                    binding.tilTotp.error = "Ingresa los 6 dígitos de tu aplicación autenticadora"
+                    binding.etTotp.requestFocus()
+                    return@setOnClickListener
+                } else {
+                    binding.tilTotp.error = null
+                }
+            }
+
+            executeLogin(email, password, totpCode)
         }
     }
 
@@ -123,13 +144,13 @@ class LoginActivity : AppCompatActivity() {
         Toast.makeText(this, "Servidor configurado:\n$formatted", Toast.LENGTH_SHORT).show()
     }
 
-    private fun executeLogin(email: String, pass: String) {
+    private fun executeLogin(email: String, pass: String, totpCode: String? = null) {
         binding.btnLogin.isEnabled = false
         binding.progressBar.visibility = View.VISIBLE
 
         lifecycleScope.launch {
             try {
-                val response = ApiClient.authService.login(LoginRequest(email, pass))
+                val response = ApiClient.authService.login(LoginRequest(email, pass, totpCode))
                 if (response.isSuccessful && response.body()?.exitoso == true) {
                     val authData = response.body()?.datos
                     if (authData != null) {
@@ -139,8 +160,33 @@ class LoginActivity : AppCompatActivity() {
                         finish()
                     }
                 } else {
-                    val errorMsg = response.body()?.mensaje ?: "Credenciales inválidas"
-                    Toast.makeText(this@LoginActivity, errorMsg, Toast.LENGTH_LONG).show()
+                    var errorMsg = response.body()?.mensaje
+                    if (errorMsg.isNullOrEmpty()) {
+                        try {
+                            val errorStr = response.errorBody()?.string() ?: ""
+                            val json = org.json.JSONObject(errorStr)
+                            errorMsg = json.optString("mensaje", "")
+                        } catch (_: Exception) {}
+                    }
+                    if (errorMsg.isNullOrEmpty()) {
+                        errorMsg = if (response.code() == 401) "Credenciales inválidas" else "Error del servidor (${response.code()})"
+                    }
+
+                    val requiresTotp = errorMsg.contains("TOTP", ignoreCase = true) ||
+                            (errorMsg.contains("código", ignoreCase = true) && errorMsg.contains("6", ignoreCase = true))
+
+                    if (requiresTotp) {
+                        binding.tilTotp.visibility = View.VISIBLE
+                        binding.etTotp.requestFocus()
+                        binding.btnLogin.text = "CONFIRMAR CÓDIGO 2FA"
+                        Toast.makeText(this@LoginActivity, "Seguridad PRISMA: Ingresa tu código de autenticación en dos pasos", Toast.LENGTH_LONG).show()
+                    } else {
+                        if (binding.tilTotp.visibility == View.VISIBLE) {
+                            binding.etTotp.setText("")
+                            binding.tilTotp.error = errorMsg
+                        }
+                        Toast.makeText(this@LoginActivity, errorMsg, Toast.LENGTH_LONG).show()
+                    }
                 }
             } catch (e: Exception) {
                 val currentUrl = sessionManager.getServerUrl()

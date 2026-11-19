@@ -1,10 +1,12 @@
 package com.prisma.mobile
 
 import com.prisma.mobile.data.model.ItemPedidoDto
+import com.prisma.mobile.data.model.LoginRequest
 import com.prisma.mobile.data.model.PedidoDto
 import com.prisma.mobile.data.model.ProductoDto
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
 import org.junit.Test
 
 class ModelValidationTest {
@@ -51,5 +53,16 @@ class ModelValidationTest {
         assertNotNull(pedido.items)
         assertEquals(1, pedido.items?.size)
         assertEquals(8000.0, pedido.totalAPagar, 0.001)
+    }
+
+    @Test
+    fun testLoginRequestWithTotp() {
+        val reqNormal = LoginRequest("test@mail.com", "pass123")
+        assertEquals("test@mail.com", reqNormal.email)
+        assertEquals("pass123", reqNormal.password)
+        assertNull(reqNormal.codigoTotp)
+
+        val reqTotp = LoginRequest("test@mail.com", "pass123", "654321")
+        assertEquals("654321", reqTotp.codigoTotp)
     }
 }

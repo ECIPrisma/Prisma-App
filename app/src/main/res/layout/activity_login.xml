@@ -102,6 +102,39 @@
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- 2FA / TOTP Input (Segundo Factor de Autenticación) -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilTotp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:visibility="gone"
+                app:boxCornerRadiusTopStart="14dp"
+                app:boxCornerRadiusTopEnd="14dp"
+                app:boxCornerRadiusBottomStart="14dp"
+                app:boxCornerRadiusBottomEnd="14dp"
+                app:boxStrokeColor="@color/prisma_teal_dark"
+                app:boxStrokeWidth="1.5dp"
+                app:hintTextColor="@color/prisma_teal_dark"
+                app:helperText="Código de 6 dígitos del autenticador"
+                app:helperTextTextColor="@color/prisma_teal_dark"
+                android:textColorHint="@color/prisma_text_secondary">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etTotp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Código 2FA (6 dígitos)"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:letterSpacing="0.15"
+                    android:gravity="center"
+                    android:textColor="@color/prisma_text_primary"
+                    android:textColorHint="@color/prisma_text_secondary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <!-- Quick Demo Selectors (Oculto por seguridad en producción) -->
             <LinearLayout
                 android:layout_width="match_parent"
