@@ -70,13 +70,35 @@ class SessionManager(context: Context) {
     }
 
     fun getOfflineCatalog(): List<com.prisma.mobile.data.model.ProductoDto> {
-        val json = prefs.getString(KEY_OFFLINE_CATALOG, null) ?: return emptyList()
-        return try {
-            val type = object : com.google.gson.reflect.TypeToken<List<com.prisma.mobile.data.model.ProductoDto>>() {}.type
-            com.google.gson.Gson().fromJson(json, type) ?: emptyList()
-        } catch (e: Exception) {
-            emptyList()
+        val json = prefs.getString(KEY_OFFLINE_CATALOG, null)
+        if (!json.isNullOrEmpty()) {
+            try {
+                val type = object : com.google.gson.reflect.TypeToken<List<com.prisma.mobile.data.model.ProductoDto>>() {}.type
+                val parsed = com.google.gson.Gson().fromJson<List<com.prisma.mobile.data.model.ProductoDto>>(json, type)
+                if (!parsed.isNullOrEmpty()) return parsed
+            } catch (_: Exception) {}
         }
+        return getDefaultCatalog()
+    }
+
+    fun getDefaultCatalog(): List<com.prisma.mobile.data.model.ProductoDto> {
+        return listOf(
+            com.prisma.mobile.data.model.ProductoDto(1L, "KO-PET-400", "Coca-Cola Original 400ml", "Paquete x 12 Unidades", 28500.0, 36000.0, 999, 1, true, true, "real_coca_400ml"),
+            com.prisma.mobile.data.model.ProductoDto(2L, "KO-PET-3000", "Coca-Cola Sabor Original 3 Litros PET", "Paca x 6 Botellas", 54000.0, 66000.0, 999, 1, true, true, "real_coca_3l"),
+            com.prisma.mobile.data.model.ProductoDto(3L, "KO-PET-1500", "Coca-Cola 1.5L Retornable Vidrio/PET", "Caja x 8 Botellas", 32000.0, 42000.0, 999, 1, false, true, "real_coca_15l"),
+            com.prisma.mobile.data.model.ProductoDto(4L, "KO-350ML-RET", "Coca-Cola Vidrio Retornable 350ml", "Canasta x 30 Botellas", 36000.0, 54000.0, 999, 1, false, true, "real_coca_vidrio"),
+            com.prisma.mobile.data.model.ProductoDto(5L, "KO-LATA-330", "Coca-Cola Sin Azúcar Lata 330ml", "Pack x 24 Latas", 54000.0, 72000.0, 999, 1, false, false, "real_coca_400ml"),
+            com.prisma.mobile.data.model.ProductoDto(6L, "KO-SPRITE-400", "Sprite Lima-Limón 400ml PET", "Paca x 12 Unidades", 27000.0, 34800.0, 999, 1, false, false, "real_sprite"),
+            com.prisma.mobile.data.model.ProductoDto(7L, "KO-QUATRO-400", "Quatro Toronja 400ml PET", "Paca x 12 Unidades", 28000.0, 35400.0, 999, 1, false, false, "real_quatro"),
+            com.prisma.mobile.data.model.ProductoDto(8L, "KO-MONSTER-473", "Monster Energy Drink 473ml", "Bandeja x 12 Latas", 86000.0, 108000.0, 999, 1, true, false, "real_monster"),
+            com.prisma.mobile.data.model.ProductoDto(9L, "KO-POWER-500", "Powerade Ion4 Mountain Berry 500ml", "Paca x 12 Botellas", 32400.0, 42000.0, 999, 1, false, false, "real_powerade"),
+            com.prisma.mobile.data.model.ProductoDto(10L, "VALLE-FRUT-15", "Jugo Del Valle Frut Citrus 1.5L", "Pack x 6 Unidades", 21000.0, 28000.0, 999, 1, true, false, "real_delvalle"),
+            com.prisma.mobile.data.model.ProductoDto(11L, "AGUA-BRISA-600", "Agua Brisa Manantial Sin Gas 600ml", "Paquete x 24 Botellas", 26000.0, 36000.0, 999, 1, false, false, "real_agua_brisa"),
+            com.prisma.mobile.data.model.ProductoDto(12L, "PST-MANZ-400", "Manzana Postobón 400ml PET", "Paca x 15 Unidades", 36000.0, 42000.0, 999, 1, true, false, "real_postobon_manzana"),
+            com.prisma.mobile.data.model.ProductoDto(13L, "PST-COLOMB-400", "Gaseosa Colombiana La Nuestra 400ml", "Paca x 15 Unidades", 36000.0, 43500.0, 999, 1, false, false, "real_colombiana"),
+            com.prisma.mobile.data.model.ProductoDto(14L, "HIT-MORA-500ML", "Jugo Hit Mora 500ml PET", "Paca x 12 Unidades", 26400.0, 33600.0, 999, 1, false, false, "real_hit_mora"),
+            com.prisma.mobile.data.model.ProductoDto(15L, "PST-BRETANA-300", "Bretaña Soda Mezclador 300ml Vidrio", "Canasta x 24 Botellas", 38000.0, 48000.0, 999, 1, false, false, "real_bretana")
+        )
     }
 
     fun enqueueOfflineOrder(order: com.prisma.mobile.data.model.CrearPedidoRequest) {

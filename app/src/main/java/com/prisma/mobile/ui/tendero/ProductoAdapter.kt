@@ -44,16 +44,48 @@ class ProductoAdapter(
             val formatoPesos = NumberFormat.getCurrencyInstance(Locale("es", "CO"))
             binding.tvWholesalePrice.text = if (agotado) "Agotado" else "${formatoPesos.format(prod.precioUnitario)} COP"
 
-            // Asignación de imagen fotográfica real de los productos de supermercado
+            // Asignación de imagen fotográfica real de los productos de la empresa
             val resId = when {
+                // Postobón Manzana
+                prod.sku.contains("MANZ") || prod.nombre.contains("Manzana", ignoreCase = true) ->
+                    com.prisma.mobile.R.drawable.real_postobon_manzana
+                // Colombiana La Nuestra
+                prod.sku.contains("COLOMB") || prod.nombre.contains("Colombiana", ignoreCase = true) ->
+                    com.prisma.mobile.R.drawable.real_colombiana
+                // Sprite
+                prod.sku.contains("SPRITE") || prod.nombre.contains("Sprite", ignoreCase = true) ->
+                    com.prisma.mobile.R.drawable.real_sprite
+                // Quatro Toronja
+                prod.sku.contains("QUATRO") || prod.nombre.contains("Quatro", ignoreCase = true) ->
+                    com.prisma.mobile.R.drawable.real_quatro
+                // Monster Energy
+                prod.sku.contains("MONSTER") || prod.nombre.contains("Monster", ignoreCase = true) ->
+                    com.prisma.mobile.R.drawable.real_monster
+                // Powerade
+                prod.sku.contains("POWER") || prod.nombre.contains("Powerade", ignoreCase = true) ->
+                    com.prisma.mobile.R.drawable.real_powerade
+                // Jugo Hit
+                prod.sku.contains("HIT") || prod.nombre.contains("Hit", ignoreCase = true) ->
+                    com.prisma.mobile.R.drawable.real_hit_mora
+                // Bretaña Soda
+                prod.sku.contains("BRETANA") || prod.nombre.contains("Bretaña", ignoreCase = true) ->
+                    com.prisma.mobile.R.drawable.real_bretana
+                // Coca-Cola 3 Litros
+                prod.sku.contains("3000") || prod.sku.contains("3L") || prod.nombre.contains("3L", ignoreCase = true) || prod.nombre.contains("3 Litros", ignoreCase = true) ->
+                    com.prisma.mobile.R.drawable.real_coca_3l
+                // Coca-Cola Vidrio Retornable
                 prod.sku.contains("RET") || prod.nombre.contains("Retornable", ignoreCase = true) || prod.nombre.contains("Vidrio", ignoreCase = true) ->
                     com.prisma.mobile.R.drawable.real_coca_vidrio
-                prod.sku.contains("BRISA") || prod.nombre.contains("Agua", ignoreCase = true) || prod.nombre.contains("Brisa", ignoreCase = true) ->
+                // Agua Brisa
+                prod.sku.contains("BRISA") || prod.nombre.contains("Agua", ignoreCase = true) || prod.nombre.contains("Brisa", ignoreCase = true) || prod.nombre.contains("Manantial", ignoreCase = true) ->
                     com.prisma.mobile.R.drawable.real_agua_brisa
-                prod.sku.contains("DELVALLE") || prod.nombre.contains("Jugo", ignoreCase = true) || prod.nombre.contains("Valle", ignoreCase = true) ->
+                // Del Valle
+                prod.sku.contains("VALLE") || prod.nombre.contains("Valle", ignoreCase = true) ->
                     com.prisma.mobile.R.drawable.real_delvalle
-                prod.sku.contains("1.5L") || prod.nombre.contains("1.5L", ignoreCase = true) ->
+                // Coca-Cola 1.5L
+                prod.sku.contains("1.5L") || prod.sku.contains("1500") || prod.nombre.contains("1.5L", ignoreCase = true) ->
                     com.prisma.mobile.R.drawable.real_coca_15l
+                // Coca-Cola 400ml / Predeterminado
                 else ->
                     com.prisma.mobile.R.drawable.real_coca_400ml
             }
