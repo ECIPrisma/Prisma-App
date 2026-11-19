@@ -2,6 +2,7 @@ package com.prisma.mobile.data.api
 
 import com.prisma.mobile.PrismaApplication
 import com.prisma.mobile.util.Constants
+import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -26,6 +27,63 @@ object ApiClient {
         chain.proceed(requestBuilder.build())
     }
 
+    private val failoverInterceptor = Interceptor { chain ->
+        val originalRequest = chain.request()
+        val originalUrl = originalRequest.url
+        val rawPath = originalUrl.encodedPath
+        val pathSegment = if (rawPath.contains("/api/v1/")) {
+            rawPath.substringAfter("/api/v1/")
+        } else {
+            rawPath.trimStart('/')
+        }
+        val pathAndQuery = pathSegment + if (originalUrl.encodedQuery != null) "?${originalUrl.encodedQuery}" else ""
+
+        val fallbackNodes = listOf(
+            Constants.SERVER_DUCKDNS_PUBLIC_URL,
+            Constants.SERVER_RENDER_PUBLIC_URL,
+            Constants.WIFI_BASE_URL,
+            Constants.EMULATOR_BASE_URL
+        )
+
+        var lastException: java.io.IOException? = null
+        var response: okhttp3.Response? = null
+
+        // 1. Intentar primero con el nodo configurado originalmente
+        try {
+            response = chain.proceed(originalRequest)
+            if (response.isSuccessful || response.code < 500) {
+                return@Interceptor response
+            }
+        } catch (e: java.io.IOException) {
+            lastException = e
+        }
+
+        // 2. Conmutación automática (Failover) a los nodos de respaldo si el primero no responde
+        val originalBase = originalUrl.toString()
+        for (node in fallbackNodes) {
+            val formattedNode = if (node.endsWith("/")) node else "$node/"
+            if (originalBase.startsWith(formattedNode)) continue // Ya se intentó
+
+            val targetUrlStr = "$formattedNode$pathAndQuery"
+            val newHttpUrl = targetUrlStr.toHttpUrlOrNull() ?: continue
+            val newRequest = originalRequest.newBuilder().url(newHttpUrl).build()
+
+            try {
+                response?.close()
+                response = chain.proceed(newRequest)
+                if (response.isSuccessful || response.code < 500) {
+                    PrismaApplication.instance.sessionManager.setServerUrl(formattedNode)
+                    return@Interceptor response
+                }
+            } catch (e: java.io.IOException) {
+                lastException = e
+            }
+        }
+
+        if (response != null) return@Interceptor response
+        throw lastException ?: java.io.IOException("No se pudo conectar a ningún nodo del cluster PRISMA")
+    }
+
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
@@ -48,19 +106,21 @@ object ApiClient {
             OkHttpClient.Builder()
                 .sslSocketFactory(sslContext.socketFactory, trustAllCerts[0] as javax.net.ssl.X509TrustManager)
                 .hostnameVerifier { _, _ -> true }
+                .addInterceptor(failoverInterceptor)
                 .addInterceptor(authInterceptor)
                 .addInterceptor(loggingInterceptor)
-                .connectTimeout(20, TimeUnit.SECONDS)
-                .readTimeout(20, TimeUnit.SECONDS)
-                .writeTimeout(20, TimeUnit.SECONDS)
+                .connectTimeout(15, TimeUnit.SECONDS)
+                .readTimeout(15, TimeUnit.SECONDS)
+                .writeTimeout(15, TimeUnit.SECONDS)
                 .build()
         } catch (e: Exception) {
             OkHttpClient.Builder()
+                .addInterceptor(failoverInterceptor)
                 .addInterceptor(authInterceptor)
                 .addInterceptor(loggingInterceptor)
-                .connectTimeout(20, TimeUnit.SECONDS)
-                .readTimeout(20, TimeUnit.SECONDS)
-                .writeTimeout(20, TimeUnit.SECONDS)
+                .connectTimeout(15, TimeUnit.SECONDS)
+                .readTimeout(15, TimeUnit.SECONDS)
+                .writeTimeout(15, TimeUnit.SECONDS)
                 .build()
         }
     }

@@ -2,7 +2,7 @@ package com.prisma.mobile.util
 
 object Constants {
     // IP local detectada de la máquina de desarrollo en la red Wi-Fi
-    const val SERVER_WIFI_IP = "192.168.100.9"
+    const val SERVER_WIFI_IP = "192.168.100.3"
     const val SERVER_PORT = "8080"
 
     // Servidor Cloud Producción Oficial (DuckDNS + AWS EC2 + Neon PostgreSQL)
@@ -10,7 +10,7 @@ object Constants {
 
     // Servidores Cloud de Contingencia / Failover
     const val SERVER_RENDER_PUBLIC_URL = "https://prisma-backend-web.onrender.com/api/v1/"
-    const val SERVER_SABIO_PUBLIC_URL = "https://server-sabio.tail2474b3.ts.net:8443/api/v1/"
+    const val SERVER_SABIO_PUBLIC_URL = "https://sabio.tail2474b3.ts.net/api/v1/"
     const val SERVER_SABIO_VPN_URL = SERVER_DUCKDNS_PUBLIC_URL
 
     const val DEFAULT_BASE_URL = SERVER_DUCKDNS_PUBLIC_URL
@@ -19,7 +19,7 @@ object Constants {
 
     // URLs locales opcionales
     const val EMULATOR_BASE_URL = "http://10.0.2.2:8080/api/v1/"
-    const val WIFI_BASE_URL = "http://192.168.100.9:8080/api/v1/"
+    const val WIFI_BASE_URL = "http://192.168.100.3:8080/api/v1/"
     const val USB_BASE_URL = "http://localhost:8080/api/v1/"
 
     fun isEmulator(): Boolean {
