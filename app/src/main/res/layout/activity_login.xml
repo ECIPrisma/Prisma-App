@@ -198,18 +198,6 @@
                 android:visibility="gone"
                 android:indeterminateTint="@color/prisma_teal" />
 
-            <!-- Server IP Status / Edit Dialog Trigger -->
-            <TextView
-                android:id="@+id/tvServerConfig"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="8dp"
-                android:text="Servidor: https://prisma-backend-web.onrender.com/api/v1/ (Toca para cambiar)"
-                android:textSize="11sp"
-                android:textColor="@color/prisma_text_secondary"
-                android:padding="6dp" />
-
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 

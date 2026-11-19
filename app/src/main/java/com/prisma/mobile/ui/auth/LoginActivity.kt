@@ -34,9 +34,6 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Reflejar URL actual configurada
-        updateServerDisplay()
-
         // Botón rápido para rol Tendero
         binding.btnQuickTendero.setOnClickListener {
             binding.etEmail.setText("dona.marta@labendicion.com")
@@ -53,11 +50,6 @@ class LoginActivity : AppCompatActivity() {
             binding.tilTotp.visibility = View.GONE
             binding.tilTotp.error = null
             binding.btnLogin.text = "INGRESAR A PRISMA"
-        }
-
-        // Diálogo para cambiar la IP/URL del servidor fácilmente
-        binding.tvServerConfig.setOnClickListener {
-            showServerConfigDialog()
         }
 
         binding.btnLogin.setOnClickListener {
@@ -86,62 +78,6 @@ class LoginActivity : AppCompatActivity() {
 
             executeLogin(email, password, totpCode)
         }
-    }
-
-    private fun updateServerDisplay() {
-        binding.tvServerConfig.text = "Servidor: ${sessionManager.getServerUrl()} (Toca para editar)"
-    }
-
-    private fun showServerConfigDialog() {
-        val options = arrayOf(
-            "Servidor Cloud Render (Producción) [Predeterminado]",
-            "Servidor Sabio Público",
-            "Emulador Android Local (10.0.2.2:8080)",
-            "Red Wi-Fi Local (${Constants.SERVER_WIFI_IP}:8080)",
-            "Ingresar URL personalizada..."
-        )
-
-        androidx.appcompat.app.AlertDialog.Builder(this)
-            .setTitle("Seleccionar Servidor")
-            .setItems(options) { _, which ->
-                when (which) {
-                    0 -> applyNewServerUrl(Constants.SERVER_RENDER_PUBLIC_URL)
-                    1 -> applyNewServerUrl(Constants.SERVER_SABIO_PUBLIC_URL)
-                    2 -> applyNewServerUrl(Constants.EMULATOR_BASE_URL)
-                    3 -> applyNewServerUrl(Constants.WIFI_BASE_URL)
-                    4 -> promptCustomServerUrl()
-                }
-            }
-            .setNegativeButton("Cancelar", null)
-            .show()
-    }
-
-    private fun promptCustomServerUrl() {
-        val input = android.widget.EditText(this).apply {
-            setText(sessionManager.getServerUrl())
-            setSelection(text.length)
-        }
-
-        androidx.appcompat.app.AlertDialog.Builder(this)
-            .setTitle("Ingresar URL Personalizada")
-            .setMessage("Ejemplo: http://${Constants.SERVER_WIFI_IP}:8080/api/v1/")
-            .setView(input)
-            .setPositiveButton("Guardar") { _, _ ->
-                val newUrl = input.text.toString().trim()
-                if (newUrl.isNotEmpty()) {
-                    applyNewServerUrl(newUrl)
-                }
-            }
-            .setNegativeButton("Cancelar", null)
-            .show()
-    }
-
-    private fun applyNewServerUrl(url: String) {
-        val formatted = if (url.endsWith("/")) url else "$url/"
-        sessionManager.setServerUrl(formatted)
-        ApiClient.updateBaseUrl(formatted)
-        updateServerDisplay()
-        Toast.makeText(this, "Servidor configurado:\n$formatted", Toast.LENGTH_SHORT).show()
     }
 
     private fun executeLogin(email: String, pass: String, totpCode: String? = null) {

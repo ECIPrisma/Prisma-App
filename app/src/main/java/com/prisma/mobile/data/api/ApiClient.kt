@@ -39,9 +39,11 @@ object ApiClient {
         val pathAndQuery = pathSegment + if (originalUrl.encodedQuery != null) "?${originalUrl.encodedQuery}" else ""
 
         val fallbackNodes = listOf(
-            Constants.SERVER_DUCKDNS_PUBLIC_URL,
             Constants.SERVER_RENDER_PUBLIC_URL,
+            Constants.SERVER_DUCKDNS_PUBLIC_URL,
+            Constants.SERVER_SABIO_PUBLIC_URL,
             Constants.WIFI_BASE_URL,
+            Constants.USB_BASE_URL,
             Constants.EMULATOR_BASE_URL
         )
 
@@ -51,7 +53,7 @@ object ApiClient {
         // 1. Intentar primero con el nodo configurado originalmente
         try {
             response = chain.proceed(originalRequest)
-            if (response.isSuccessful || response.code < 500) {
+            if (response.isSuccessful || (response.code in 200..499 && response.code != 404)) {
                 return@Interceptor response
             }
         } catch (e: java.io.IOException) {
@@ -71,7 +73,7 @@ object ApiClient {
             try {
                 response?.close()
                 response = chain.proceed(newRequest)
-                if (response.isSuccessful || response.code < 500) {
+                if (response.isSuccessful || (response.code in 200..499 && response.code != 404)) {
                     PrismaApplication.instance.sessionManager.setServerUrl(formattedNode)
                     return@Interceptor response
                 }
@@ -109,18 +111,18 @@ object ApiClient {
                 .addInterceptor(failoverInterceptor)
                 .addInterceptor(authInterceptor)
                 .addInterceptor(loggingInterceptor)
-                .connectTimeout(15, TimeUnit.SECONDS)
-                .readTimeout(15, TimeUnit.SECONDS)
-                .writeTimeout(15, TimeUnit.SECONDS)
+                .connectTimeout(6, TimeUnit.SECONDS)
+                .readTimeout(20, TimeUnit.SECONDS)
+                .writeTimeout(20, TimeUnit.SECONDS)
                 .build()
         } catch (e: Exception) {
             OkHttpClient.Builder()
                 .addInterceptor(failoverInterceptor)
                 .addInterceptor(authInterceptor)
                 .addInterceptor(loggingInterceptor)
-                .connectTimeout(15, TimeUnit.SECONDS)
-                .readTimeout(15, TimeUnit.SECONDS)
-                .writeTimeout(15, TimeUnit.SECONDS)
+                .connectTimeout(6, TimeUnit.SECONDS)
+                .readTimeout(20, TimeUnit.SECONDS)
+                .writeTimeout(20, TimeUnit.SECONDS)
                 .build()
         }
     }

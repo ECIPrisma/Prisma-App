@@ -13,8 +13,8 @@ object Constants {
     const val SERVER_SABIO_PUBLIC_URL = "https://sabio.tail2474b3.ts.net/api/v1/"
     const val SERVER_SABIO_VPN_URL = SERVER_DUCKDNS_PUBLIC_URL
 
-    const val DEFAULT_BASE_URL = SERVER_DUCKDNS_PUBLIC_URL
-    const val CLOUD_BASE_URL = SERVER_DUCKDNS_PUBLIC_URL
+    const val DEFAULT_BASE_URL = SERVER_RENDER_PUBLIC_URL
+    const val CLOUD_BASE_URL = SERVER_RENDER_PUBLIC_URL
     const val SERVER_SABIO_URL = SERVER_SABIO_PUBLIC_URL
 
     // URLs locales opcionales
