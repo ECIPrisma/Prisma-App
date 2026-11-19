@@ -99,6 +99,11 @@ class CatalogoActivity : AppCompatActivity() {
             repetirUltimoPedido()
         }
 
+        binding.drawerOptSeguridad.setOnClickListener {
+            binding.drawerLayout.closeDrawer(androidx.core.view.GravityCompat.START)
+            startActivity(Intent(this, com.prisma.mobile.ui.seguridad.Seguridad2FAActivity::class.java))
+        }
+
         binding.drawerOptLogout.setOnClickListener {
             binding.drawerLayout.closeDrawer(androidx.core.view.GravityCompat.START)
             confirmarCerrarSesion()

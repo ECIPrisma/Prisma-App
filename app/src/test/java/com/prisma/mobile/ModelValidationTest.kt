@@ -7,6 +7,7 @@ import com.prisma.mobile.data.model.ProductoDto
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class ModelValidationTest {
@@ -64,5 +65,25 @@ class ModelValidationTest {
 
         val reqTotp = LoginRequest("test@mail.com", "pass123", "654321")
         assertEquals("654321", reqTotp.codigoTotp)
+    }
+
+    @Test
+    fun testTotpModelsSerialization() {
+        val status = com.prisma.mobile.data.model.TotpStatusResponse(enabled = true)
+        assertTrue(status.enabled)
+
+        val setup = com.prisma.mobile.data.model.TotpSetupResponse(
+            secret = "TESTSECRET123",
+            otpauthUri = "otpauth://totp/Prisma:test@test.com?secret=TESTSECRET123"
+        )
+        assertEquals("TESTSECRET123", setup.secret)
+        assertTrue(setup.otpauthUri.contains("otpauth://"))
+
+        val codeReq = com.prisma.mobile.data.model.TotpCodeRequest("123456")
+        assertEquals("123456", codeReq.codigo)
+
+        val disableReq = com.prisma.mobile.data.model.TotpDisableRequest("myPass", "654321")
+        assertEquals("myPass", disableReq.password)
+        assertEquals("654321", disableReq.codigo)
     }
 }

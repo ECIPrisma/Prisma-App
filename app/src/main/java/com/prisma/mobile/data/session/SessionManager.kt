@@ -42,6 +42,8 @@ class SessionManager(context: Context) {
 
     fun getUserRole(): String? = prefs.getString(KEY_ROLE, null)
 
+    fun getUserEmail(): String? = prefs.getString(KEY_EMAIL, null)
+
     fun getUserName(): String = prefs.getString(KEY_NAME, "Usuario") ?: "Usuario"
 
     fun isLoggedIn(): Boolean = !getToken().isNullOrEmpty()

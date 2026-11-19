@@ -90,6 +90,11 @@ class ConductorRouteActivity : AppCompatActivity() {
             finalizarJornada()
         }
 
+        binding.drawerOptSeguridad.setOnClickListener {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+            startActivity(Intent(this, com.prisma.mobile.ui.seguridad.Seguridad2FAActivity::class.java))
+        }
+
         binding.drawerOptLogout.setOnClickListener {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             confirmarCerrarSesion()

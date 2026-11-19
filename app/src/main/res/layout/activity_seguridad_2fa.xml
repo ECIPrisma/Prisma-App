@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/prisma_surface">
+
+    <!-- Toolbar Oficial PRISMA -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/prisma_teal"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/prisma_white"
+        app:title="Seguridad y 2FA"
+        app:titleTextColor="@color/prisma_white"
+        app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:elevation="4dp" />
+
+    <!-- Barra de progreso -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:indeterminate="true"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Banner Informativo -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/prisma_border"
+                app:cardBackgroundColor="@color/prisma_white"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_shield_security"
+                            app:tint="@color/prisma_teal"
+                            android:contentDescription="Escudo Seguridad" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="14dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Doble Factor (TOTP)"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/prisma_text_primary" />
+
+                            <TextView
+                                android:id="@+id/tvUserEmail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="usuario@prisma.com"
+                                android:textSize="13sp"
+                                android:textColor="@color/prisma_text_secondary" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/prisma_border"
+                        android:layout_marginVertical="14dp" />
+
+                    <!-- Estado Actual -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Estado actual:"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/prisma_text_secondary" />
+
+                        <TextView
+                            android:id="@+id/tvStatusBadge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/badge_pill_promo"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="4dp"
+                            android:text="CONSULTANDO..."
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/prisma_orange_dark" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvStatusDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Comprobando el estado de autenticación en dos pasos..."
+                        android:textSize="13sp"
+                        android:textColor="@color/prisma_text_secondary"
+                        android:lineSpacingExtra="3dp" />
+
+                    <!-- Botón para iniciar setup cuando está inactivo -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnIniciarSetup"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:text="ACTIVAR 2FA EN ESTA CUENTA"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:cornerRadius="12dp"
+                        android:backgroundTint="@color/prisma_teal"
+                        android:layout_marginTop="16dp"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Sección de Configuración y Clave Secreta -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardSetup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/prisma_teal"
+                app:cardBackgroundColor="@color/prisma_white"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1. Clave Secreta para Autenticador"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/prisma_teal_dark" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Copia esta clave secreta e ingrésala manualmente en Google Authenticator, Microsoft Authenticator o tu app 2FA favorita:"
+                        android:textSize="13sp"
+                        android:textColor="@color/prisma_text_secondary"
+                        android:layout_marginTop="6dp" />
+
+                    <!-- Cuadro Clave Secreta -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/bg_wireframe_card"
+                        android:padding="14dp"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tvSecretKey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="LE7JUQA74YYE4FSMSUWWUVUKMQWGGNZI"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:fontFamily="monospace"
+                            android:textColor="@color/prisma_text_primary"
+                            android:letterSpacing="0.08"
+                            android:textAlignment="center" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnCopySecret"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Copiar Clave al Portapapeles"
+                            android:textColor="@color/prisma_teal"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2. Ingresa el código de 6 dígitos"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/prisma_teal_dark"
+                        android:layout_marginTop="18dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Escribe el código temporal que muestra tu aplicación autenticadora para vincular y confirmar:"
+                        android:textSize="13sp"
+                        android:textColor="@color/prisma_text_secondary"
+                        android:layout_marginTop="6dp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilCodeSetup"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        app:boxStrokeColor="@color/prisma_teal"
+                        app:hintTextColor="@color/prisma_teal"
+                        android:hint="Código 2FA (6 dígitos)">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCodeSetup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:maxLength="6"
+                            android:textAlignment="center"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:fontFamily="monospace"
+                            android:letterSpacing="0.25"
+                            android:textColor="@color/prisma_text_primary" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnConfirmarSetup"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:text="VINCULAR Y ACTIVAR 2FA"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:cornerRadius="12dp"
+                        android:backgroundTint="@color/prisma_teal"
+                        android:layout_marginTop="16dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Opción para Desactivar cuando está activo -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDesactivar2fa"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Desactivar Autenticación en Dos Pasos"
+                android:textColor="@color/status_red"
+                app:strokeColor="@color/status_red"
+                app:cornerRadius="12dp"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:layout_marginBottom="16dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

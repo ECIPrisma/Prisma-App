@@ -24,3 +24,21 @@ data class AuthResponse(
     @SerializedName("rol") val rol: String,
     @SerializedName("proveedorId") val proveedorId: Long?
 )
+
+data class TotpStatusResponse(
+    @SerializedName("enabled") val enabled: Boolean
+)
+
+data class TotpSetupResponse(
+    @SerializedName("secret") val secret: String,
+    @SerializedName("otpauthUri") val otpauthUri: String
+)
+
+data class TotpCodeRequest(
+    @SerializedName("codigo") val codigo: String
+)
+
+data class TotpDisableRequest(
+    @SerializedName("password") val password: String,
+    @SerializedName("codigo") val codigo: String
+)

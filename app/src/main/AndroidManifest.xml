@@ -59,6 +59,12 @@
             android:exported="false"
             android:theme="@style/Theme.PRISMA.NoActionBar" />
 
+        <!-- Seguridad y Factor Doble Paso (2FA / TOTP) -->
+        <activity
+            android:name=".ui.seguridad.Seguridad2FAActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PRISMA.NoActionBar" />
+
         <!-- N-08: Checkout en línea con pasarela simulada (Tendero) -->
         <activity
             android:name=".ui.tendero.PagoActivity"
