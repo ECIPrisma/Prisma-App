@@ -50,7 +50,7 @@
         <!-- Catálogo de Productos y Pedidos (Tendero) -->
         <activity
             android:name=".ui.tendero.CatalogoActivity"
-            android:exported="false"
+            android:exported="true"
             android:theme="@style/Theme.PRISMA.NoActionBar" />
 
         <!-- Mis Pedidos & PIN Criptográfico (Tendero) -->
@@ -74,7 +74,7 @@
         <!-- Modo Pro: Radar de Barrio y Combos IA (Tendero) -->
         <activity
             android:name=".ui.tendero.TenderoProActivity"
-            android:exported="false"
+            android:exported="true"
             android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.PRISMA.NoActionBar" />
 

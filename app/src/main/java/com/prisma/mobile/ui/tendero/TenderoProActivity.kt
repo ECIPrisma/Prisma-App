@@ -89,7 +89,7 @@ class TenderoProActivity : AppCompatActivity() {
         if (esPro) {
             binding.layoutPaywall.visibility = View.GONE
             binding.layoutProContent.visibility = View.VISIBLE
-            binding.toolbar.title = "Prisma Pro (⭐ Activo)"
+            binding.toolbar.title = "Prisma Pro (Membresía Activa)"
         } else {
             binding.layoutPaywall.visibility = View.VISIBLE
             binding.layoutProContent.visibility = View.GONE
@@ -139,7 +139,7 @@ class TenderoProActivity : AppCompatActivity() {
                 sessionManager.setTenderoPro(true)
                 Toast.makeText(
                     this@TenderoProActivity,
-                    "🎉 ¡Pago de $49.000 aprobado con Wompi! Bienvenido a Prisma Pro",
+                    "Transacción aprobada por Wompi Bancolombia ($49.000 COP). Suscripción Prisma Pro activa.",
                     Toast.LENGTH_LONG
                 ).show()
 

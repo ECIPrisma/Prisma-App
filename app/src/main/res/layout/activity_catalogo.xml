@@ -270,7 +270,7 @@
                     android:letterSpacing="0.08"
                     android:layout_marginBottom="12dp" />
 
-                <!-- Opción VIP: Radar de Barrio (Prisma Pro) -->
+                <!-- Opción VIP: Radar Territorial (Prisma Pro) -->
                 <LinearLayout
                     android:id="@+id/drawerOptModoPro"
                     android:layout_width="match_parent"
@@ -285,7 +285,7 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_star_pro" />
+                        android:src="@drawable/ic_radar_analytics" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -303,7 +303,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="⭐ Radar de Barrio"
+                                android:text="Radar Territorial"
                                 android:textSize="14sp"
                                 android:textStyle="bold"
                                 android:textColor="#0F766E" />
@@ -326,7 +326,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Top ventas en tu zona y combos IA"
+                            android:text="Inteligencia de demanda barrial y surtido"
                             android:textSize="11sp"
                             android:textColor="@color/prisma_text_secondary" />
                     </LinearLayout>
@@ -359,7 +359,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="🔥 Promociones y Descuentos"
+                            android:text="Promociones y Descuentos"
                             android:textSize="14sp"
                             android:textStyle="bold"
                             android:textColor="#B45309" />
