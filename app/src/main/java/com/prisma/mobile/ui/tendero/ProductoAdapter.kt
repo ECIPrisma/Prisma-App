@@ -41,8 +41,41 @@ class ProductoAdapter(
             val agotado = prod.stockDisponible <= 0
             binding.tvPresentation.text = if (agotado) "${prod.presentacion} • Agotado" else prod.presentacion
 
-            val formatoPesos = NumberFormat.getCurrencyInstance(Locale("es", "CO"))
-            binding.tvWholesalePrice.text = if (agotado) "Agotado" else "${formatoPesos.format(prod.precioUnitario)} COP"
+            val formatoPesos = NumberFormat.getCurrencyInstance(Locale("es", "CO")).apply {
+                maximumFractionDigits = 0
+            }
+            binding.tvWholesalePrice.text = if (agotado) "Agotado" else formatoPesos.format(prod.precioUnitario)
+
+            if (prod.esPromocion) {
+                // Tarjeta destacada con acento cálido y borde dorado para promociones
+                binding.root.setCardBackgroundColor(android.graphics.Color.parseColor("#FFFDF5"))
+                binding.root.strokeColor = android.graphics.Color.parseColor("#F59E0B")
+                binding.root.strokeWidth = (binding.root.context.resources.displayMetrics.density * 1.8f).toInt()
+
+                binding.tvPromoBadge.visibility = View.VISIBLE
+                binding.tvPromoBadge.text = "🔥 OFERTA"
+
+                // Precio sugerido tachado para evidenciar el descuento al tendero
+                if (prod.precioSugeridoPublico != null && prod.precioSugeridoPublico > prod.precioUnitario) {
+                    binding.tvOriginalPrice.visibility = View.VISIBLE
+                    binding.tvOriginalPrice.text = formatoPesos.format(prod.precioSugeridoPublico)
+                    binding.tvOriginalPrice.paintFlags = binding.tvOriginalPrice.paintFlags or android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
+                } else {
+                    binding.tvOriginalPrice.visibility = View.GONE
+                }
+            } else {
+                binding.root.setCardBackgroundColor(android.graphics.Color.parseColor("#FFFFFF"))
+                binding.root.strokeColor = android.graphics.Color.parseColor("#E2E8F0")
+                binding.root.strokeWidth = (binding.root.context.resources.displayMetrics.density * 1.0f).toInt()
+                binding.tvPromoBadge.visibility = View.GONE
+                binding.tvOriginalPrice.visibility = View.GONE
+            }
+
+            if (prod.esHabitual) {
+                binding.tvHabitualBadge.visibility = View.VISIBLE
+            } else {
+                binding.tvHabitualBadge.visibility = View.GONE
+            }
 
             // Asignación de imagen fotográfica real de los productos de la empresa
             val resId = when {
@@ -90,18 +123,6 @@ class ProductoAdapter(
                     com.prisma.mobile.R.drawable.real_coca_400ml
             }
             binding.ivProduct.setImageResource(resId)
-
-            if (prod.esPromocion) {
-                binding.tvPromoBadge.visibility = View.VISIBLE
-            } else {
-                binding.tvPromoBadge.visibility = View.GONE
-            }
-
-            if (prod.esHabitual) {
-                binding.tvHabitualBadge.visibility = View.VISIBLE
-            } else {
-                binding.tvHabitualBadge.visibility = View.GONE
-            }
 
             val cantActual = cantidades[prod.id] ?: 0
             binding.tvQuantity.text = cantActual.toString()

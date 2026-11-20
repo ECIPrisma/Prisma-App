@@ -65,6 +65,12 @@
             android:exported="false"
             android:theme="@style/Theme.PRISMA.NoActionBar" />
 
+        <!-- Zona de Promociones y Ofertas (Tendero) -->
+        <activity
+            android:name=".ui.tendero.PromocionesActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PRISMA.NoActionBar" />
+
         <!-- N-08: Checkout en línea con pasarela simulada (Tendero) -->
         <activity
             android:name=".ui.tendero.PagoActivity"

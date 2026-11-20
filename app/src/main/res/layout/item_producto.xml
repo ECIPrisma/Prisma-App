@@ -106,16 +106,34 @@
                 android:maxLines="1"
                 android:ellipsize="end" />
 
-            <!-- Precio Mayorista -->
-            <TextView
-                android:id="@+id/tvWholesalePrice"
+            <!-- Fila de Precios: Precio Promocion + Precio Regular Tachado -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="$28.500 COP"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:textColor="@color/prisma_teal_dark" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="3dp">
+
+                <TextView
+                    android:id="@+id/tvWholesalePrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$ 28.500"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/prisma_teal_dark" />
+
+                <TextView
+                    android:id="@+id/tvOriginalPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="$ 36.000"
+                    android:textSize="11sp"
+                    android:singleLine="true"
+                    android:textColor="#94A3B8"
+                    android:visibility="gone" />
+            </LinearLayout>
 
         </LinearLayout>
 

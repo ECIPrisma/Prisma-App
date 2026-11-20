@@ -28,8 +28,24 @@ class CatalogoActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupUI()
+        
+        // Carga inmediata del catálogo local/default para que los 15 productos aparezcan instantáneamente
+        inicializarCatalogoInstantaneo()
+        
         registrarTokenPushFcm()
         cargarCatalogo()
+    }
+
+    private fun inicializarCatalogoInstantaneo() {
+        val cached = sessionManager.getOfflineCatalog()
+        val defaultCatalog = sessionManager.getDefaultCatalog()
+        listaOriginalProductos = if (cached.size < defaultCatalog.size) {
+            sessionManager.saveOfflineCatalog(defaultCatalog)
+            defaultCatalog
+        } else {
+            cached
+        }
+        adapter.setProductos(listaOriginalProductos)
     }
 
     private fun registrarTokenPushFcm() {
@@ -84,6 +100,15 @@ class CatalogoActivity : AppCompatActivity() {
         }
 
         // Operaciones del Menú Lateral (Drawer)
+        binding.drawerOptPromociones.setOnClickListener {
+            binding.drawerLayout.closeDrawer(androidx.core.view.GravityCompat.START)
+            startActivity(Intent(this, PromocionesActivity::class.java))
+        }
+
+        binding.bannerPromociones.setOnClickListener {
+            startActivity(Intent(this, PromocionesActivity::class.java))
+        }
+
         binding.drawerOptPedidos.setOnClickListener {
             binding.drawerLayout.closeDrawer(androidx.core.view.GravityCompat.START)
             startActivity(Intent(this, MisPedidosActivity::class.java))
@@ -156,7 +181,7 @@ class CatalogoActivity : AppCompatActivity() {
         val filtrados = when (tipo) {
             FiltroTipo.TODOS -> listaOriginalProductos
             FiltroTipo.SUSCRITOS -> listaOriginalProductos.filter { it.esHabitual || it.sku.contains("KO-") }
-            FiltroTipo.PROMOCIONES -> listaOriginalProductos.filter { it.esPromocion || it.precioSugeridoPublico != null }
+            FiltroTipo.PROMOCIONES -> listaOriginalProductos.filter { it.esPromocion || (it.precioSugeridoPublico != null && it.precioSugeridoPublico > it.precioUnitario) }
         }
         adapter.setProductos(filtrados)
         if (filtrados.isEmpty()) {
@@ -186,12 +211,24 @@ class CatalogoActivity : AppCompatActivity() {
             try {
                 // Proveedor FEMSA (ID 1) por defecto
                 val response = ApiClient.tiendaService.getCatalogo(1L)
+                val defaultCatalog = sessionManager.getDefaultCatalog()
                 if (response.isSuccessful) {
                     val rawList = response.body()?.datos ?: emptyList()
-                    // Marcar como habituales los productos suscritos frecuentes (ej: Coca-Cola) y promociones
-                    listaOriginalProductos = rawList.map { prod ->
+                    val mapFinal = if (rawList.size < defaultCatalog.size) {
+                        val merged = rawList.associateBy { it.sku }.toMutableMap()
+                        for (def in defaultCatalog) {
+                            if (!merged.containsKey(def.sku)) {
+                                merged[def.sku] = def
+                            }
+                        }
+                        merged.values.toList()
+                    } else {
+                        rawList
+                    }
+
+                    listaOriginalProductos = mapFinal.map { prod ->
                         val habitual = prod.sku.contains("KO-") || prod.nombre.contains("Coca-Cola")
-                        val promo = prod.precioSugeridoPublico != null && prod.precioSugeridoPublico > prod.precioUnitario
+                        val promo = prod.esPromocion || (prod.precioSugeridoPublico != null && prod.precioSugeridoPublico > prod.precioUnitario)
                         prod.copy(esHabitual = habitual, esPromocion = promo)
                     }
                     sessionManager.saveOfflineCatalog(listaOriginalProductos)
@@ -210,13 +247,15 @@ class CatalogoActivity : AppCompatActivity() {
 
     private fun cargarDesdeCacheOffline() {
         val cached = sessionManager.getOfflineCatalog()
-        if (cached.isNotEmpty()) {
-            listaOriginalProductos = cached
-            adapter.setProductos(cached)
-            Toast.makeText(this, "Modo sin conexión: mostrando catálogo almacenado localmente", Toast.LENGTH_LONG).show()
+        val defaultCatalog = sessionManager.getDefaultCatalog()
+        listaOriginalProductos = if (cached.size < defaultCatalog.size) {
+            sessionManager.saveOfflineCatalog(defaultCatalog)
+            defaultCatalog
         } else {
-            Toast.makeText(this, "No hay datos disponibles sin conexión, intenta cuando recuperes señal", Toast.LENGTH_LONG).show()
+            cached
         }
+        adapter.setProductos(listaOriginalProductos)
+        Toast.makeText(this, "Catálogo actualizado (${listaOriginalProductos.size} productos)", Toast.LENGTH_SHORT).show()
     }
 
     private fun mostrarDialogoCheckout(items: Map<Long, Int>) {

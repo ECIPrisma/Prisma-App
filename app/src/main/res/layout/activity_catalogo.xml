@@ -86,6 +86,66 @@
                 </com.google.android.material.chip.ChipGroup>
             </HorizontalScrollView>
 
+            <!-- Banner Tactil de Promociones Destacadas -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/bannerPromociones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="1dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#F59E0B"
+                app:cardBackgroundColor="#FFFBEB"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_offer_tag" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🔥 ¡Ofertas del Dia Activadas!"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:textColor="#B45309" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ver todos los productos con precio especial mayorista"
+                            android:textSize="11sp"
+                            android:textColor="#92400E" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="VER ›"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="#B45309" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
             <!-- Lista de Productos a Pantalla Completa -->
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/swipeRefresh"
@@ -209,6 +269,54 @@
                     android:textStyle="bold"
                     android:letterSpacing="0.08"
                     android:layout_marginBottom="12dp" />
+
+                <!-- Opción 0: Promociones y Descuentos Exclusivos -->
+                <LinearLayout
+                    android:id="@+id/drawerOptPromociones"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_option_item"
+                    android:padding="14dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_offer_tag" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="14dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🔥 Promociones y Descuentos"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="#B45309" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Precios especiales y combos B2B"
+                            android:textSize="11sp"
+                            android:textColor="@color/prisma_text_secondary" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textSize="20sp"
+                        android:textColor="@color/prisma_text_secondary" />
+                </LinearLayout>
 
                 <!-- Opción 1: Mis Pedidos & PIN -->
                 <LinearLayout
