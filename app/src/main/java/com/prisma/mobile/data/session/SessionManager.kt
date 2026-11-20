@@ -118,6 +118,12 @@ class SessionManager(context: Context) {
         }
     }
 
+    fun isTenderoPro(): Boolean = prefs.getBoolean(KEY_TENDERO_PRO, false)
+
+    fun setTenderoPro(activo: Boolean) {
+        prefs.edit().putBoolean(KEY_TENDERO_PRO, activo).apply()
+    }
+
     fun clearPendingOfflineOrders() {
         prefs.edit().remove(KEY_OFFLINE_ORDERS).apply()
     }
@@ -132,5 +138,6 @@ class SessionManager(context: Context) {
         private const val KEY_CUSTOM_SERVER_URL = "custom_server_url"
         private const val KEY_OFFLINE_CATALOG = "offline_catalog_cache"
         private const val KEY_OFFLINE_ORDERS = "offline_orders_queue"
+        private const val KEY_TENDERO_PRO = "tendero_pro_activo"
     }
 }

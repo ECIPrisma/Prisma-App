@@ -71,6 +71,13 @@
             android:exported="false"
             android:theme="@style/Theme.PRISMA.NoActionBar" />
 
+        <!-- Modo Pro: Radar de Barrio y Combos IA (Tendero) -->
+        <activity
+            android:name=".ui.tendero.TenderoProActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/Theme.PRISMA.NoActionBar" />
+
         <!-- N-08: Checkout en línea con pasarela simulada (Tendero) -->
         <activity
             android:name=".ui.tendero.PagoActivity"

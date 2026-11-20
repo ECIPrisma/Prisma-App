@@ -270,6 +270,68 @@
                     android:letterSpacing="0.08"
                     android:layout_marginBottom="12dp" />
 
+                <!-- Opción VIP: Radar de Barrio (Prisma Pro) -->
+                <LinearLayout
+                    android:id="@+id/drawerOptModoPro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_option_item"
+                    android:padding="14dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_star_pro" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="14dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⭐ Radar de Barrio"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:textColor="#0F766E" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:text="PRO"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:textColor="#FFFFFF"
+                                android:background="@drawable/bg_hub_pill_teal"
+                                android:paddingStart="6dp"
+                                android:paddingEnd="6dp"
+                                android:paddingTop="1dp"
+                                android:paddingBottom="1dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Top ventas en tu zona y combos IA"
+                            android:textSize="11sp"
+                            android:textColor="@color/prisma_text_secondary" />
+                    </LinearLayout>
+                </LinearLayout>
+
                 <!-- Opción 0: Promociones y Descuentos Exclusivos -->
                 <LinearLayout
                     android:id="@+id/drawerOptPromociones"

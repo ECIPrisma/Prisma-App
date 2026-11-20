@@ -100,6 +100,11 @@ class CatalogoActivity : AppCompatActivity() {
         }
 
         // Operaciones del Menú Lateral (Drawer)
+        binding.drawerOptModoPro.setOnClickListener {
+            binding.drawerLayout.closeDrawer(androidx.core.view.GravityCompat.START)
+            startActivity(Intent(this, TenderoProActivity::class.java))
+        }
+
         binding.drawerOptPromociones.setOnClickListener {
             binding.drawerLayout.closeDrawer(androidx.core.view.GravityCompat.START)
             startActivity(Intent(this, PromocionesActivity::class.java))

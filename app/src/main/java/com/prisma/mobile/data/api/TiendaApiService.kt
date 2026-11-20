@@ -48,4 +48,16 @@ interface TiendaApiService {
 
     @GET("notificaciones/mis-notificaciones")
     suspend fun getMisNotificaciones(): Response<ApiResponse<List<Map<String, Any>>>>
+
+    // Modo Pro Tendero: Suscripción Wompi ($49.000 COP) y Radar de Zona
+    @GET("tiendas/suscripcion")
+    suspend fun getEstadoSuscripcion(): Response<ApiResponse<Map<String, Any>>>
+
+    @POST("tiendas/suscripcion/pago")
+    suspend fun pagarSuscripcion(
+        @Body request: PagarPedidoRequest
+    ): Response<ApiResponse<Map<String, Any>>>
+
+    @GET("tiendas/modo-pro/radar-zona")
+    suspend fun getRadarZona(): Response<ApiResponse<Map<String, Any>>>
 }
