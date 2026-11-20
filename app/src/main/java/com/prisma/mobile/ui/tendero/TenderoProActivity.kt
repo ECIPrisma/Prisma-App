@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 
 /**
  * Pantalla de Suscripción Prisma Pro para Tenderos ($49.000 COP / mes).
- * Bloquea el Radar de Barrio y los Combos Inteligentes con IA hasta que el tendero
+ * Bloquea el Radar de Barrio y los Combos de Bebidas con IA hasta que el tendero
  * pague su suscripción mediante la pasarela Wompi (Nequi / Tarjeta / PSE).
  */
 class TenderoProActivity : AppCompatActivity() {
@@ -69,18 +69,18 @@ class TenderoProActivity : AppCompatActivity() {
             actualizarEstadoUI()
         }
 
-        // Acciones de agregar productos del radar al pedido
+        // Acciones de agregar bebidas líderes del catálogo al pedido
         binding.btnPedir1.setOnClickListener {
-            Toast.makeText(this, "Leche Alquería 1L agregada a tu pedido", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Coca-Cola 1.5L Retornable agregada a tu pedido", Toast.LENGTH_SHORT).show()
         }
         binding.btnPedir2.setOnClickListener {
-            Toast.makeText(this, "Arroz Diana 1kg agregado a tu pedido", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Coca-Cola 3 Litros PET agregada a tu pedido", Toast.LENGTH_SHORT).show()
         }
         binding.btnPedir3.setOnClickListener {
-            Toast.makeText(this, "Aceite Premier 1000ml agregado a tu pedido", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Quatro Toronja 400ml agregada a tu pedido", Toast.LENGTH_SHORT).show()
         }
         binding.btnPedir4.setOnClickListener {
-            Toast.makeText(this, "Galletas Festival agregadas a tu pedido", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Monster Energy Drink agregada a tu pedido", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -89,11 +89,11 @@ class TenderoProActivity : AppCompatActivity() {
         if (esPro) {
             binding.layoutPaywall.visibility = View.GONE
             binding.layoutProContent.visibility = View.VISIBLE
-            binding.toolbar.title = "Prisma Pro (Membresía Activa)"
+            binding.toolbar.title = "Radar de Barrio · Prisma Pro"
         } else {
             binding.layoutPaywall.visibility = View.VISIBLE
             binding.layoutProContent.visibility = View.GONE
-            binding.toolbar.title = "Prisma Pro Tendero"
+            binding.toolbar.title = "Prisma Pro para Tenderos"
         }
     }
 
@@ -128,14 +128,13 @@ class TenderoProActivity : AppCompatActivity() {
                     banco = if (medio == "PSE") dato else null
                 )
                 
-                // Intento contra backend
                 try {
                     ApiClient.tiendaService.pagarSuscripcion(req)
                 } catch (_: Exception) {
                     // Fallback offline / sandbox local
                 }
 
-                delay(800) // Simulación breve de tiempo de pasarela Wompi
+                delay(800)
                 sessionManager.setTenderoPro(true)
                 Toast.makeText(
                     this@TenderoProActivity,

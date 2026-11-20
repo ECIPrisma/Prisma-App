@@ -3,20 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC">
+    android:background="@color/prisma_surface">
 
+    <!-- Barra Superior con la Identidad Oficial PRISMA (Verde Petróleo #1E6F68) -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#0F172A">
+        android:background="@color/prisma_teal">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:title="Prisma Pro Tendero"
-            app:titleTextColor="#FFFFFF" />
+            app:navigationIconTint="@color/prisma_white"
+            app:title="Prisma Pro para Tenderos"
+            app:titleTextColor="@color/prisma_white" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -32,7 +34,7 @@
             android:padding="16dp">
 
             <!-- ============================================================== -->
-            <!-- ESTADO 1: PAYWALL WOMPI (BLOQUEADO / PROPUESTA DE VALOR SAAS)  -->
+            <!-- ESTADO 1: PAYWALL WOMPI (SUSCRIPCIÓN TENDERO PRO - ESTILO PRISMA)-->
             <!-- ============================================================== -->
             <LinearLayout
                 android:id="@+id/layoutPaywall"
@@ -41,13 +43,13 @@
                 android:orientation="vertical"
                 android:visibility="visible">
 
-                <!-- Hero Card: Dark Slate & Teal B2B Fintech -->
+                <!-- Tarjeta Principal: Identidad PRISMA (Verde Petróleo #1E6F68 y Dorado #F59E0B) -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="14dp"
+                    app:cardCornerRadius="12dp"
                     app:cardElevation="2dp"
-                    app:strokeColor="#1E293B"
+                    app:strokeColor="@color/prisma_border"
                     app:strokeWidth="1dp"
                     android:layout_marginBottom="16dp">
 
@@ -55,31 +57,31 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:background="#0F172A"
-                        android:padding="22dp">
+                        android:background="@color/prisma_teal"
+                        android:padding="20dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            android:layout_marginBottom="14dp">
+                            android:layout_marginBottom="12dp">
 
                             <ImageView
-                                android:layout_width="26dp"
-                                android:layout_height="26dp"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
                                 android:src="@drawable/ic_radar_target"
-                                app:tint="#14B8A6" />
+                                app:tint="@color/prisma_white" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="PRISMA PRO TENDERO"
-                                android:textColor="#2DD4BF"
+                                android:textColor="@color/prisma_white"
                                 android:textSize="13sp"
                                 android:textStyle="bold"
-                                android:letterSpacing="0.08"
-                                android:layout_marginStart="10dp" />
+                                android:letterSpacing="0.06"
+                                android:layout_marginStart="8dp" />
 
                             <View
                                 android:layout_width="0dp"
@@ -89,11 +91,11 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="MEMBRESÍA B2B"
+                                android:text="RADAR DE BARRIO"
                                 android:textSize="10sp"
                                 android:textStyle="bold"
-                                android:textColor="#042F2E"
-                                android:background="#14B8A6"
+                                android:textColor="#92400E"
+                                android:background="@color/prisma_orange_light"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="3dp" />
                         </LinearLayout>
@@ -101,9 +103,9 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Inteligencia Territorial y Radar de Demanda para tu Tienda"
-                            android:textColor="#FFFFFF"
-                            android:textSize="18sp"
+                            android:text="Conoce qué bebidas están pidiendo tus vecinos y gana más con cada pedido"
+                            android:textColor="@color/prisma_white"
+                            android:textSize="17sp"
                             android:textStyle="bold"
                             android:lineSpacingExtra="3dp"
                             android:layout_marginBottom="8dp" />
@@ -111,18 +113,18 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Descubre exactamente qué productos se están agotando en tu barrio, configura combos de alta rentabilidad con IA y optimiza tu capital de trabajo."
-                            android:textColor="#94A3B8"
+                            android:text="Tu distribuidor te avisa qué presentaciones se están vendiendo más rápido en tu zona para que nunca te quedes sin surtido en la nevera."
+                            android:textColor="#E6F4F1"
                             android:textSize="12sp"
                             android:lineSpacingExtra="2dp"
-                            android:layout_marginBottom="16dp" />
+                            android:layout_marginBottom="14dp" />
 
-                        <!-- Retorno de Inversión Proyectado -->
+                        <!-- Banner de Beneficio Práctico -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:background="#1E293B"
+                            android:background="#15534E"
                             android:padding="12dp"
                             android:gravity="center_vertical">
 
@@ -130,27 +132,27 @@
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:src="@drawable/ic_trending_up"
-                                app:tint="#2DD4BF" />
+                                app:tint="@color/prisma_orange" />
 
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:layout_marginStart="10dp"
-                                android:text="Retorno Proyectado: Recupera los $49.000 COP en 5 días aplicando los combos de alta rotación sugeridos."
-                                android:textColor="#E2E8F0"
+                                android:text="Los tenderos con Prisma Pro venden en promedio $180.000 más al mes armando los combos sugeridos en su vitrina."
+                                android:textColor="@color/prisma_white"
                                 android:textSize="11sp" />
                         </LinearLayout>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Matriz de Beneficios Analíticos -->
+                <!-- Beneficios Claros para el Tendero -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="1dp"
-                    app:strokeColor="#E2E8F0"
+                    app:strokeColor="@color/prisma_border"
                     app:strokeWidth="1dp"
                     android:layout_marginBottom="16dp">
 
@@ -159,29 +161,30 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:padding="18dp"
-                        android:background="#FFFFFF">
+                        android:background="@color/prisma_card_bg">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="MÓDULOS INCLUIDOS EN LA SUSCRIPCIÓN"
+                            android:text="LO QUE RECIBES EN TU TIENDA"
                             android:textSize="11sp"
                             android:textStyle="bold"
-                            android:letterSpacing="0.08"
-                            android:textColor="#64748B"
-                            android:layout_marginBottom="14dp" />
+                            android:letterSpacing="0.06"
+                            android:textColor="@color/prisma_teal"
+                            android:layout_marginBottom="12dp" />
 
-                        <!-- Beneficio 1: Radar Territorial -->
+                        <!-- Beneficio 1 -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:layout_marginBottom="14dp">
+                            android:layout_marginBottom="12dp">
 
                             <ImageView
                                 android:layout_width="18dp"
                                 android:layout_height="18dp"
                                 android:src="@drawable/ic_check_verified"
+                                app:tint="@color/prisma_teal"
                                 android:layout_marginTop="2dp" />
 
                             <LinearLayout
@@ -194,31 +197,32 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Radar Territorial de Demanda (Radio 800m)"
+                                    android:text="Semáforo de Demanda en tu Zona"
                                     android:textSize="13sp"
                                     android:textStyle="bold"
-                                    android:textColor="#0F172A" />
+                                    android:textColor="@color/prisma_text_primary" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Monitoreo en tiempo real del clúster de tiendas vecinas en Kennedy Central."
+                                    android:text="Descubre cuáles bebidas de tu distribuidor se están agotando más rápido cerca a tu negocio."
                                     android:textSize="11sp"
-                                    android:textColor="#64748B" />
+                                    android:textColor="@color/prisma_text_secondary" />
                             </LinearLayout>
                         </LinearLayout>
 
-                        <!-- Beneficio 2: Minería de Canasta -->
+                        <!-- Beneficio 2 -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:layout_marginBottom="14dp">
+                            android:layout_marginBottom="12dp">
 
                             <ImageView
                                 android:layout_width="18dp"
                                 android:layout_height="18dp"
                                 android:src="@drawable/ic_check_verified"
+                                app:tint="@color/prisma_teal"
                                 android:layout_marginTop="2dp" />
 
                             <LinearLayout
@@ -231,21 +235,21 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Copiloto IA · Minería de Canasta (FP-Growth)"
+                                    android:text="Combos Sugeridos de Mayor Ganancia"
                                     android:textSize="13sp"
                                     android:textStyle="bold"
-                                    android:textColor="#0F172A" />
+                                    android:textColor="@color/prisma_text_primary" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Prescripción automática de combos de venta con márgenes superiores al 18%."
+                                    android:text="Ideas fáciles para poner en tu vitrina o nevera y ganar entre $14.000 y $22.000 extra por paca."
                                     android:textSize="11sp"
-                                    android:textColor="#64748B" />
+                                    android:textColor="@color/prisma_text_secondary" />
                             </LinearLayout>
                         </LinearLayout>
 
-                        <!-- Beneficio 3: Alertas Predictivas -->
+                        <!-- Beneficio 3 -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -256,6 +260,7 @@
                                 android:layout_width="18dp"
                                 android:layout_height="18dp"
                                 android:src="@drawable/ic_check_verified"
+                                app:tint="@color/prisma_teal"
                                 android:layout_marginTop="2dp" />
 
                             <LinearLayout
@@ -268,17 +273,17 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Detección de Brechas y Quiebres de Stock"
+                                    android:text="Avisos del Camión Repartidor"
                                     android:textSize="13sp"
                                     android:textStyle="bold"
-                                    android:textColor="#0F172A" />
+                                    android:textColor="@color/prisma_text_primary" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Avisos tempranos antes de que los productos líderes se agoten en el sector."
+                                    android:text="Te avisa antes del fin de semana si una presentación se está escaseando en la ruta."
                                     android:textSize="11sp"
-                                    android:textColor="#64748B" />
+                                    android:textColor="@color/prisma_text_secondary" />
                             </LinearLayout>
                         </LinearLayout>
 
@@ -288,9 +293,8 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            android:background="#F8FAFC"
-                            android:padding="14dp"
-                            android:layout_marginTop="6dp">
+                            android:background="@color/prisma_surface"
+                            android:padding="14dp">
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -301,11 +305,11 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="TARIFA MENSUAL VINCULADA"
+                                    android:text="SUSCRIPCIÓN MENSUAL"
                                     android:textSize="10sp"
                                     android:letterSpacing="0.06"
                                     android:textStyle="bold"
-                                    android:textColor="#64748B" />
+                                    android:textColor="@color/prisma_text_muted" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -313,31 +317,31 @@
                                     android:text="$49.000 COP / mes"
                                     android:textSize="18sp"
                                     android:textStyle="bold"
-                                    android:textColor="#0F172A" />
+                                    android:textColor="@color/prisma_text_primary" />
                             </LinearLayout>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="IVA 19% INCLUIDO"
+                                android:text="IVA INCLUIDO"
                                 android:textSize="10sp"
-                                android:textColor="#0F766E"
+                                android:textColor="@color/prisma_teal"
                                 android:textStyle="bold"
                                 android:letterSpacing="0.05"
-                                android:background="#F0FDFA"
+                                android:background="@color/prisma_teal_light"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="4dp" />
                         </LinearLayout>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Formulario Pasarela Wompi Bancolombia -->
+                <!-- Formulario Wompi Bancolombia -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="1dp"
-                    app:strokeColor="#E2E8F0"
+                    app:strokeColor="@color/prisma_border"
                     app:strokeWidth="1dp"
                     android:layout_marginBottom="16dp">
 
@@ -346,16 +350,16 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:padding="18dp"
-                        android:background="#FFFFFF">
+                        android:background="@color/prisma_card_bg">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Pasarela de Pago · Wompi Bancolombia"
+                            android:text="Pago Seguro con Wompi Bancolombia"
                             android:textSize="14sp"
                             android:textStyle="bold"
-                            android:textColor="#0F172A"
-                            android:layout_marginBottom="12dp" />
+                            android:textColor="@color/prisma_text_primary"
+                            android:layout_marginBottom="10dp" />
 
                         <RadioGroup
                             android:id="@+id/rgMedioPago"
@@ -395,14 +399,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="10dp"
-                            app:boxStrokeColor="#0F766E"
-                            app:hintTextColor="#0F766E">
+                            app:boxStrokeColor="@color/prisma_teal"
+                            app:hintTextColor="@color/prisma_teal">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etDatoPago"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Número de cuenta / celular Nequi"
+                                android:hint="Número de celular Nequi"
                                 android:inputType="phone"
                                 android:text="3991111111"
                                 android:textSize="14sp" />
@@ -411,19 +415,20 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="#F1F5F9"
+                            android:background="@color/prisma_surface"
                             android:padding="10dp"
-                            android:text="Ambiente Sandbox: 3991111111 (Nequi) o 4242424242424242 (Tarjeta) para procesar de forma inmediata."
+                            android:text="Modo de Prueba: puedes usar 3991111111 (Nequi) para activar de inmediato."
                             android:textSize="11sp"
-                            android:textColor="#475569"
-                            android:layout_marginBottom="16dp" />
+                            android:textColor="@color/prisma_text_secondary"
+                            android:layout_marginBottom="14dp" />
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnPagarWompi"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
-                            android:text="Confirmar Suscripción · $49.000 COP"
-                            android:backgroundTint="#0F766E"
+                            android:text="Activar Prisma Pro · $49.000 COP"
+                            android:backgroundTint="@color/prisma_teal"
+                            android:textColor="@color/prisma_white"
                             android:textSize="13sp"
                             android:textStyle="bold"
                             app:cornerRadius="8dp" />
@@ -441,7 +446,7 @@
 
 
             <!-- ============================================================== -->
-            <!-- ESTADO 2: DASHBOARD PRO ACTIVO (DESBLOQUEADO / ALTO IMPACTO)  -->
+            <!-- ESTADO 2: DASHBOARD PRO ACTIVO (DESBLOQUEADO - SIMPLE Y CLARO) -->
             <!-- ============================================================== -->
             <LinearLayout
                 android:id="@+id/layoutProContent"
@@ -450,22 +455,22 @@
                 android:orientation="vertical"
                 android:visibility="gone">
 
-                <!-- Header de Estado de Suscripción -->
+                <!-- Header de Estado de la Membresía -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="1dp"
-                    app:strokeColor="#CBD5E1"
+                    app:strokeColor="@color/prisma_border"
                     app:strokeWidth="1dp"
-                    android:layout_marginBottom="16dp">
+                    android:layout_marginBottom="14dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:padding="16dp"
-                        android:background="#FFFFFF">
+                        android:background="@color/prisma_card_bg">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -477,12 +482,12 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="MEMBRESÍA ACTIVA · PRISMA PRO"
+                                android:text="MEMBRESÍA ACTIVA"
                                 android:textSize="11sp"
                                 android:textStyle="bold"
                                 android:letterSpacing="0.06"
-                                android:textColor="#0F766E"
-                                android:background="#F0FDFA"
+                                android:textColor="@color/prisma_teal"
+                                android:background="@color/prisma_teal_light"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="3dp" />
 
@@ -497,61 +502,61 @@
                                 android:layout_height="wrap_content"
                                 android:text="30 días de cobertura"
                                 android:textSize="12sp"
-                                android:textColor="#475569" />
+                                android:textColor="@color/prisma_text_secondary" />
                         </LinearLayout>
 
                         <TextView
                             android:id="@+id/tvBarrioActivo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Clúster Comercial: Kennedy Central (Bogotá D.C.)"
-                            android:textSize="14sp"
+                            android:text="Zona Monitoreada: Kennedy Central"
+                            android:textSize="15sp"
                             android:textStyle="bold"
-                            android:textColor="#0F172A" />
+                            android:textColor="@color/prisma_text_primary" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Telemetría territorial y radar satelital en un radio de 800m con 42 tiendas clientes vinculadas."
+                            android:text="Conectado con los pedidos de 42 tiendas vecinas de tu distribuidor."
                             android:textSize="11sp"
-                            android:textColor="#64748B"
+                            android:textColor="@color/prisma_text_secondary"
                             android:layout_marginTop="2dp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
 
                 <!-- ============================================================== -->
-                <!-- TARJETA 1: RADAR GEOGRÁFICO Y GRÁFICOS DE DEMANDA TERRITORIAL   -->
+                <!-- TARJETA 1: SEMÁFORO DE DEMANDA EN TU BARRIO (FÁCIL Y VISUAL)  -->
                 <!-- ============================================================== -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="14dp"
-                    app:cardElevation="2dp"
-                    app:strokeColor="#CBD5E1"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="1dp"
+                    app:strokeColor="@color/prisma_border"
                     app:strokeWidth="1dp"
-                    android:layout_marginBottom="16dp">
+                    android:layout_marginBottom="14dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:background="#FFFFFF">
+                        android:background="@color/prisma_card_bg">
 
-                        <!-- Encabezado de la Tarjeta de Radar -->
+                        <!-- Encabezado de la Tarjeta -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            android:background="#0F172A"
-                            android:padding="16dp">
+                            android:background="@color/prisma_teal"
+                            android:padding="14dp">
 
                             <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
                                 android:src="@drawable/ic_radar_target"
-                                app:tint="#2DD4BF" />
+                                app:tint="@color/prisma_white" />
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -563,289 +568,144 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="RADAR TERRITORIAL EN VIVO"
-                                    android:textColor="#2DD4BF"
-                                    android:textSize="11sp"
+                                    android:text="RADAR DE TU ZONA"
+                                    android:textColor="@color/prisma_orange_light"
+                                    android:textSize="10sp"
                                     android:textStyle="bold"
-                                    android:letterSpacing="0.08" />
+                                    android:letterSpacing="0.06" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Matriz de Demanda Barrial (UPZ 79)"
-                                    android:textColor="#FFFFFF"
-                                    android:textSize="14sp"
+                                    android:text="¿Qué están pidiendo tus vecinos hoy?"
+                                    android:textColor="@color/prisma_white"
+                                    android:textSize="13sp"
                                     android:textStyle="bold" />
                             </LinearLayout>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="RADIO: 800m"
-                                android:textSize="10sp"
-                                android:textStyle="bold"
-                                android:textColor="#042F2E"
-                                android:background="#2DD4BF"
-                                android:paddingHorizontal="6dp"
-                                android:paddingVertical="3dp" />
                         </LinearLayout>
 
-                        <!-- Contenido Interno: Gráfico Geográfico de Cuadrantes -->
+                        <!-- Contenido Interno: Lista Visual y Sencilla -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
                             android:padding="16dp">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="DENSIDAD DE CONSUMO POR CUADRANTE"
-                                android:textSize="10sp"
-                                android:textStyle="bold"
-                                android:letterSpacing="0.06"
-                                android:textColor="#64748B"
-                                android:layout_marginBottom="10dp" />
-
-                            <!-- Cuadrícula 2x2 representando los 4 cuadrantes del barrio -->
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:layout_marginBottom="8dp">
-
-                                <!-- Cuadrante Norte -->
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:orientation="vertical"
-                                    android:background="#F0FDFA"
-                                    android:padding="10dp"
-                                    android:layout_marginEnd="4dp">
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="CUADRANTE NORTE"
-                                        android:textSize="9sp"
-                                        android:textStyle="bold"
-                                        android:textColor="#0F766E" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Densidad: 88%"
-                                        android:textSize="12sp"
-                                        android:textStyle="bold"
-                                        android:textColor="#0F172A" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Líder: Lácteos &amp; Café"
-                                        android:textSize="10sp"
-                                        android:textColor="#475569" />
-                                </LinearLayout>
-
-                                <!-- Cuadrante Oriente -->
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:orientation="vertical"
-                                    android:background="#F8FAFC"
-                                    android:padding="10dp"
-                                    android:layout_marginStart="4dp">
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="CUADRANTE ORIENTE"
-                                        android:textSize="9sp"
-                                        android:textStyle="bold"
-                                        android:textColor="#475569" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Densidad: 82%"
-                                        android:textSize="12sp"
-                                        android:textStyle="bold"
-                                        android:textColor="#0F172A" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Líder: Abarrotes &amp; Aceite"
-                                        android:textSize="10sp"
-                                        android:textColor="#475569" />
-                                </LinearLayout>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:layout_marginBottom="16dp">
-
-                                <!-- Cuadrante Sur -->
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:orientation="vertical"
-                                    android:background="#F8FAFC"
-                                    android:padding="10dp"
-                                    android:layout_marginEnd="4dp">
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="CUADRANTE SUR"
-                                        android:textSize="9sp"
-                                        android:textStyle="bold"
-                                        android:textColor="#475569" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Densidad: 76%"
-                                        android:textSize="12sp"
-                                        android:textStyle="bold"
-                                        android:textColor="#0F172A" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Líder: Bebidas &amp; Snacks"
-                                        android:textSize="10sp"
-                                        android:textColor="#475569" />
-                                </LinearLayout>
-
-                                <!-- Cuadrante Occidente -->
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:orientation="vertical"
-                                    android:background="#F8FAFC"
-                                    android:padding="10dp"
-                                    android:layout_marginStart="4dp">
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="CUADRANTE OCCIDENTE"
-                                        android:textSize="9sp"
-                                        android:textStyle="bold"
-                                        android:textColor="#475569" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Densidad: 69%"
-                                        android:textSize="12sp"
-                                        android:textStyle="bold"
-                                        android:textColor="#0F172A" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Líder: Confitería"
-                                        android:textSize="10sp"
-                                        android:textColor="#475569" />
-                                </LinearLayout>
-                            </LinearLayout>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="BARÓMETRO DE VELOCIDAD DE ROTACIÓN"
-                                android:textSize="10sp"
-                                android:textStyle="bold"
-                                android:letterSpacing="0.06"
-                                android:textColor="#64748B"
-                                android:layout_marginBottom="8dp" />
-
-                            <!-- Gráfico de barras horizontales de demanda -->
-                            <!-- Barra 1: Lácteos -->
+                            <!-- Producto 1: Muy Rápida Salida -->
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
-                                android:layout_marginBottom="8dp">
+                                android:layout_marginBottom="12dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:gravity="center_vertical">
 
                                     <TextView
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:text="Lácteos y Derivados"
-                                        android:textSize="11sp"
-                                        android:textColor="#1E293B" />
+                                        android:text="Coca-Cola 1.5L Retornable"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/prisma_text_primary" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="92% rotación · +24.0%"
-                                        android:textSize="11sp"
+                                        android:text="DEMANDA MUY ALTA"
+                                        android:textSize="10sp"
                                         android:textStyle="bold"
-                                        android:textColor="#0F766E" />
+                                        android:textColor="@color/status_green_text"
+                                        android:background="@color/status_green_bg"
+                                        android:paddingHorizontal="6dp"
+                                        android:paddingVertical="2dp" />
                                 </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="9 de cada 10 tiendas vecinas la pidieron esta semana. ¡No te quedes sin canastas!"
+                                    android:textSize="11sp"
+                                    android:textColor="@color/prisma_text_secondary"
+                                    android:layout_marginTop="2dp" />
 
                                 <ProgressBar
                                     style="?android:attr/progressBarStyleHorizontal"
                                     android:layout_width="match_parent"
-                                    android:layout_height="6dp"
-                                    android:progress="92"
-                                    android:progressTint="#0F766E"
-                                    android:layout_marginTop="3dp" />
+                                    android:layout_height="5dp"
+                                    android:progress="94"
+                                    android:progressTint="@color/prisma_teal"
+                                    android:layout_marginTop="4dp" />
                             </LinearLayout>
 
-                            <!-- Barra 2: Bebidas y Refrescos -->
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/prisma_border"
+                                android:layout_marginBottom="12dp" />
+
+                            <!-- Producto 2: Salida Fuerte -->
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
-                                android:layout_marginBottom="8dp">
+                                android:layout_marginBottom="12dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:gravity="center_vertical">
 
                                     <TextView
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:text="Bebidas y Refrescos"
-                                        android:textSize="11sp"
-                                        android:textColor="#1E293B" />
+                                        android:text="Coca-Cola 3 Litros PET"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/prisma_text_primary" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="85% rotación · +19.5%"
-                                        android:textSize="11sp"
+                                        android:text="ALTA SALIDA"
+                                        android:textSize="10sp"
                                         android:textStyle="bold"
-                                        android:textColor="#0F766E" />
+                                        android:textColor="@color/status_green_text"
+                                        android:background="@color/status_green_bg"
+                                        android:paddingHorizontal="6dp"
+                                        android:paddingVertical="2dp" />
                                 </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Presentación familiar líder para el fin de semana. Rotación del 88% en el sector."
+                                    android:textSize="11sp"
+                                    android:textColor="@color/prisma_text_secondary"
+                                    android:layout_marginTop="2dp" />
 
                                 <ProgressBar
                                     style="?android:attr/progressBarStyleHorizontal"
                                     android:layout_width="match_parent"
-                                    android:layout_height="6dp"
-                                    android:progress="85"
-                                    android:progressTint="#0F766E"
-                                    android:layout_marginTop="3dp" />
+                                    android:layout_height="5dp"
+                                    android:progress="88"
+                                    android:progressTint="@color/prisma_teal"
+                                    android:layout_marginTop="4dp" />
                             </LinearLayout>
 
-                            <!-- Barra 3: Abarrotes Básicos -->
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/prisma_border"
+                                android:layout_marginBottom="12dp" />
+
+                            <!-- Producto 3: Subiendo -->
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -854,32 +714,45 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:gravity="center_vertical">
 
                                     <TextView
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:text="Abarrotes Básicos"
-                                        android:textSize="11sp"
-                                        android:textColor="#1E293B" />
+                                        android:text="Quatro Toronja 400ml PET"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/prisma_text_primary" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="76% rotación · +15.0%"
-                                        android:textSize="11sp"
+                                        android:text="+25% ESTA SEMANA"
+                                        android:textSize="10sp"
                                         android:textStyle="bold"
-                                        android:textColor="#475569" />
+                                        android:textColor="#92400E"
+                                        android:background="@color/prisma_orange_light"
+                                        android:paddingHorizontal="6dp"
+                                        android:paddingVertical="2dp" />
                                 </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Creció fuerte por días calurosos en el barrio. Recomendado tener bien fría en vitrina."
+                                    android:textSize="11sp"
+                                    android:textColor="@color/prisma_text_secondary"
+                                    android:layout_marginTop="2dp" />
 
                                 <ProgressBar
                                     style="?android:attr/progressBarStyleHorizontal"
                                     android:layout_width="match_parent"
-                                    android:layout_height="6dp"
-                                    android:progress="76"
-                                    android:progressTint="#475569"
-                                    android:layout_marginTop="3dp" />
+                                    android:layout_height="5dp"
+                                    android:progress="78"
+                                    android:progressTint="@color/prisma_orange"
+                                    android:layout_marginTop="4dp" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -888,37 +761,36 @@
 
 
                 <!-- ============================================================== -->
-                <!-- TARJETA 2: COPILOTO IA · MINERÍA DE CANASTA Y PRESCRIPCIÓN     -->
-                <!-- (DEDICADA EXCLUSIVAMENTE A LA IA - SEPARADA DE COMPRAS)        -->
+                <!-- TARJETA 2: COMBOS RECOMENDADOS PARA TU VITRINA (GANANCIA EXTRA)-->
                 <!-- ============================================================== -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="14dp"
-                    app:cardElevation="2dp"
-                    app:strokeColor="#CBD5E1"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="1dp"
+                    app:strokeColor="@color/prisma_border"
                     app:strokeWidth="1dp"
-                    android:layout_marginBottom="16dp">
+                    android:layout_marginBottom="14dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="18dp"
-                        android:background="#FFFFFF">
+                        android:padding="16dp"
+                        android:background="@color/prisma_card_bg">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            android:layout_marginBottom="12dp">
+                            android:layout_marginBottom="10dp">
 
                             <ImageView
-                                android:layout_width="22dp"
-                                android:layout_height="22dp"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
                                 android:src="@drawable/ic_sparkle_ai"
-                                app:tint="#0F766E" />
+                                app:tint="@color/prisma_teal" />
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -930,39 +802,28 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="COPILOTO IA TERRITORIAL"
-                                    android:textSize="11sp"
+                                    android:text="CONSEJOS DE TU PREVENTISTA (IA)"
+                                    android:textSize="10sp"
                                     android:textStyle="bold"
-                                    android:letterSpacing="0.08"
-                                    android:textColor="#0F766E" />
+                                    android:letterSpacing="0.06"
+                                    android:textColor="@color/prisma_teal" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Minería de Canasta &amp; Patrones Zonal"
-                                    android:textSize="14sp"
+                                    android:text="Combos para que ganes más en mostrador"
+                                    android:textSize="13sp"
                                     android:textStyle="bold"
-                                    android:textColor="#0F172A" />
+                                    android:textColor="@color/prisma_text_primary" />
                             </LinearLayout>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="FP-GROWTH"
-                                android:textSize="9sp"
-                                android:textStyle="bold"
-                                android:textColor="#0F766E"
-                                android:background="#F0FDFA"
-                                android:paddingHorizontal="6dp"
-                                android:paddingVertical="3dp" />
                         </LinearLayout>
 
-                        <!-- Combo Prescriptivo 1 -->
+                        <!-- Combo 1: Almuerzo Familiar -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:background="#F8FAFC"
+                            android:background="@color/prisma_surface"
                             android:padding="12dp"
                             android:layout_marginBottom="10dp">
 
@@ -977,63 +838,46 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="Combo Desayuno: Café 500g + Leche 1L"
-                                    android:textSize="12sp"
+                                    android:text="Combo 1: Almuerzo Familiar"
+                                    android:textSize="13sp"
                                     android:textStyle="bold"
-                                    android:textColor="#0F172A" />
+                                    android:textColor="@color/prisma_text_primary" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Margen: +18.2%"
+                                    android:text="GANAS +$22.000"
                                     android:textSize="10sp"
                                     android:textStyle="bold"
-                                    android:textColor="#065F46"
-                                    android:background="#ECFDF5"
+                                    android:textColor="@color/status_green_text"
+                                    android:background="@color/status_green_bg"
                                     android:paddingHorizontal="6dp"
                                     android:paddingVertical="2dp" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:layout_marginBottom="6dp">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Lift: 1.83x"
-                                    android:textSize="10sp"
-                                    android:textStyle="bold"
-                                    android:textColor="#0F766E"
-                                    android:background="#F0FDFA"
-                                    android:paddingHorizontal="4dp"
-                                    android:paddingVertical="1dp"
-                                    android:layout_marginEnd="6dp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Confianza: 83.4%"
-                                    android:textSize="10sp"
-                                    android:textColor="#64748B" />
                             </LinearLayout>
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Prescripción IA: 8 de cada 10 clientes que piden café llevan leche si está en el mostrador frontal. Ofrecer paquete conjunto a $19.800 COP."
+                                android:text="Pide juntos: 1 Paca de Coca-Cola 3L + 1 Paca de Quatro 1.5L"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/prisma_teal"
+                                android:layout_marginBottom="3dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Consejo: Quien compra la gaseosa familiar suele pedir un sabor cítrico para alternar en el almuerzo. Ponlas juntas en la entrada de la nevera."
                                 android:textSize="11sp"
-                                android:textColor="#475569" />
+                                android:textColor="@color/prisma_text_secondary" />
                         </LinearLayout>
 
-                        <!-- Combo Prescriptivo 2 -->
+                        <!-- Combo 2: Sed y Trabajo Individual -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:background="#F8FAFC"
+                            android:background="@color/prisma_surface"
                             android:padding="12dp"
                             android:layout_marginBottom="12dp">
 
@@ -1048,74 +892,57 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="Combo Tarde: Jugo Hit 200ml + Galletas Festival"
-                                    android:textSize="12sp"
+                                    android:text="Combo 2: Para Clientes de Paso"
+                                    android:textSize="13sp"
                                     android:textStyle="bold"
-                                    android:textColor="#0F172A" />
+                                    android:textColor="@color/prisma_text_primary" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Margen: +22.0%"
+                                    android:text="GANAS +$14.500"
                                     android:textSize="10sp"
                                     android:textStyle="bold"
-                                    android:textColor="#065F46"
-                                    android:background="#ECFDF5"
+                                    android:textColor="@color/status_green_text"
+                                    android:background="@color/status_green_bg"
                                     android:paddingHorizontal="6dp"
                                     android:paddingVertical="2dp" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:layout_marginBottom="6dp">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Lift: 2.14x"
-                                    android:textSize="10sp"
-                                    android:textStyle="bold"
-                                    android:textColor="#0F766E"
-                                    android:background="#F0FDFA"
-                                    android:paddingHorizontal="4dp"
-                                    android:paddingVertical="1dp"
-                                    android:layout_marginEnd="6dp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Confianza: 79.1%"
-                                    android:textSize="10sp"
-                                    android:textColor="#64748B" />
                             </LinearLayout>
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Prescripción IA: Alta rotación entre 15:00 y 18:00 (salida escolar). Exhibir en bandeja de caja registradora."
+                                android:text="Pide juntos: 1 Paquete de Coca-Cola 400ml + 1 Paca de Agua Brisa 600ml"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/prisma_teal"
+                                android:layout_marginBottom="3dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Consejo: Entre las 12:00 y las 14:00 horas, trabajadores y peatones buscan bebida individual fría. Tener ambas en la vitrina de mostrador agiliza la venta."
                                 android:textSize="11sp"
-                                android:textColor="#475569" />
+                                android:textColor="@color/prisma_text_secondary" />
                         </LinearLayout>
 
-                        <!-- Alerta Preventiva de Quiebre de Barrio -->
+                        <!-- Aviso del Camión Repartidor -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:background="#FEF2F2"
+                            android:background="@color/promo_tag_bg"
                             android:padding="10dp"
                             android:gravity="center_vertical">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="ALERTA DE STOCK"
+                                android:text="AVISO DEL CAMIÓN"
                                 android:textSize="9sp"
                                 android:textStyle="bold"
-                                android:textColor="#991B1B"
-                                android:background="#FEE2E2"
+                                android:textColor="@color/promo_tag_text"
+                                android:background="#FDE68A"
                                 android:paddingHorizontal="5dp"
                                 android:paddingVertical="2dp"
                                 android:layout_marginEnd="8dp" />
@@ -1124,23 +951,23 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="El 75% de las tiendas del cuadrante agotan Café los viernes. Anticipa tu reposición."
+                                android:text="El fin de semana pasado varias tiendas cercanas se quedaron sin Coca-Cola Retornable. Pide hoy para asegurar tus canastas a tiempo."
                                 android:textSize="11sp"
-                                android:textColor="#991B1B" />
+                                android:textColor="@color/promo_tag_text" />
                         </LinearLayout>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
 
                 <!-- ============================================================== -->
-                <!-- TARJETA 3: CATÁLOGO DE REPOSICIÓN ZONAL (SOLO PRODUCTOS)       -->
+                <!-- TARJETA 3: BEBIDAS LÍDERES EN TU ZONA (BOTONES DE REPOSICIÓN)  -->
                 <!-- ============================================================== -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="14dp"
-                    app:cardElevation="2dp"
-                    app:strokeColor="#CBD5E1"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="1dp"
+                    app:strokeColor="@color/prisma_border"
                     app:strokeWidth="1dp"
                     android:layout_marginBottom="16dp">
 
@@ -1149,19 +976,19 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:padding="16dp"
-                        android:background="#FFFFFF">
+                        android:background="@color/prisma_card_bg">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="REFERENCIAS CRÍTICAS DEL SECTOR (TOP 4 ROTACIÓN)"
+                            android:text="LAS 4 BEBIDAS MÁS PEDIDAS EN TU BARRIO"
                             android:textSize="11sp"
                             android:textStyle="bold"
-                            android:letterSpacing="0.08"
-                            android:textColor="#64748B"
-                            android:layout_marginBottom="12dp" />
+                            android:letterSpacing="0.06"
+                            android:textColor="@color/prisma_teal"
+                            android:layout_marginBottom="10dp" />
 
-                        <!-- Item 01 -->
+                        <!-- Item 01: Coca-Cola 1.5L Retornable -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -1176,8 +1003,8 @@
                                 android:text="01"
                                 android:textSize="11sp"
                                 android:textStyle="bold"
-                                android:textColor="#0F766E"
-                                android:background="#F0FDFA" />
+                                android:textColor="@color/prisma_teal"
+                                android:background="@color/prisma_teal_light" />
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -1189,17 +1016,17 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Leche Entera Alquería 1L"
+                                    android:text="Coca-Cola 1.5L Retornable"
                                     android:textSize="13sp"
                                     android:textStyle="bold"
-                                    android:textColor="#0F172A" />
+                                    android:textColor="@color/prisma_text_primary" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Lácteos · +24.0% demanda · Venta sugerida: $4.800"
+                                    android:text="Caja x 8 · Compra: $32.000 · Venta sugerida: $42.000"
                                     android:textSize="11sp"
-                                    android:textColor="#64748B" />
+                                    android:textColor="@color/prisma_text_secondary" />
                             </LinearLayout>
 
                             <com.google.android.material.button.MaterialButton
@@ -1207,19 +1034,19 @@
                                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="34dp"
-                                android:text="Reponer"
+                                android:text="Pedir"
                                 android:textSize="11sp"
-                                app:strokeColor="#0F766E"
-                                android:textColor="#0F766E"
+                                app:strokeColor="@color/prisma_teal"
+                                android:textColor="@color/prisma_teal"
                                 app:cornerRadius="6dp" />
                         </LinearLayout>
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#F1F5F9" />
+                            android:background="@color/prisma_border" />
 
-                        <!-- Item 02 -->
+                        <!-- Item 02: Coca-Cola 3L PET -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -1234,8 +1061,8 @@
                                 android:text="02"
                                 android:textSize="11sp"
                                 android:textStyle="bold"
-                                android:textColor="#0F766E"
-                                android:background="#F0FDFA" />
+                                android:textColor="@color/prisma_teal"
+                                android:background="@color/prisma_teal_light" />
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -1247,17 +1074,17 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Arroz Diana Premium 1kg"
+                                    android:text="Coca-Cola 3 Litros PET"
                                     android:textSize="13sp"
                                     android:textStyle="bold"
-                                    android:textColor="#0F172A" />
+                                    android:textColor="@color/prisma_text_primary" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Granos · +19.5% demanda · Venta sugerida: $4.200"
+                                    android:text="Paca x 6 · Compra: $54.000 · Venta sugerida: $66.000"
                                     android:textSize="11sp"
-                                    android:textColor="#64748B" />
+                                    android:textColor="@color/prisma_text_secondary" />
                             </LinearLayout>
 
                             <com.google.android.material.button.MaterialButton
@@ -1265,19 +1092,19 @@
                                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="34dp"
-                                android:text="Reponer"
+                                android:text="Pedir"
                                 android:textSize="11sp"
-                                app:strokeColor="#0F766E"
-                                android:textColor="#0F766E"
+                                app:strokeColor="@color/prisma_teal"
+                                android:textColor="@color/prisma_teal"
                                 app:cornerRadius="6dp" />
                         </LinearLayout>
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#F1F5F9" />
+                            android:background="@color/prisma_border" />
 
-                        <!-- Item 03 -->
+                        <!-- Item 03: Quatro Toronja 400ml -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -1292,8 +1119,8 @@
                                 android:text="03"
                                 android:textSize="11sp"
                                 android:textStyle="bold"
-                                android:textColor="#0F766E"
-                                android:background="#F0FDFA" />
+                                android:textColor="@color/prisma_teal"
+                                android:background="@color/prisma_teal_light" />
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -1305,17 +1132,17 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Aceite Premier 1000ml"
+                                    android:text="Quatro Toronja 400ml PET"
                                     android:textSize="13sp"
                                     android:textStyle="bold"
-                                    android:textColor="#0F172A" />
+                                    android:textColor="@color/prisma_text_primary" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Abarrotes · +15.0% demanda · Venta sugerida: $10.500"
+                                    android:text="Paca x 12 · Compra: $28.000 · Venta sugerida: $35.400"
                                     android:textSize="11sp"
-                                    android:textColor="#64748B" />
+                                    android:textColor="@color/prisma_text_secondary" />
                             </LinearLayout>
 
                             <com.google.android.material.button.MaterialButton
@@ -1323,19 +1150,19 @@
                                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="34dp"
-                                android:text="Reponer"
+                                android:text="Pedir"
                                 android:textSize="11sp"
-                                app:strokeColor="#0F766E"
-                                android:textColor="#0F766E"
+                                app:strokeColor="@color/prisma_teal"
+                                android:textColor="@color/prisma_teal"
                                 app:cornerRadius="6dp" />
                         </LinearLayout>
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#F1F5F9" />
+                            android:background="@color/prisma_border" />
 
-                        <!-- Item 04 -->
+                        <!-- Item 04: Monster Energy 473ml -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -1350,8 +1177,8 @@
                                 android:text="04"
                                 android:textSize="11sp"
                                 android:textStyle="bold"
-                                android:textColor="#0F766E"
-                                android:background="#F0FDFA" />
+                                android:textColor="@color/prisma_teal"
+                                android:background="@color/prisma_teal_light" />
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -1363,17 +1190,17 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Galletas Festival Vainilla"
+                                    android:text="Monster Energy Drink 473ml"
                                     android:textSize="13sp"
                                     android:textStyle="bold"
-                                    android:textColor="#0F172A" />
+                                    android:textColor="@color/prisma_text_primary" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Confitería · +11.2% demanda · Venta sugerida: $1.200"
+                                    android:text="Bandeja x 12 · Compra: $86.000 · Venta sugerida: $108.000"
                                     android:textSize="11sp"
-                                    android:textColor="#64748B" />
+                                    android:textColor="@color/prisma_text_secondary" />
                             </LinearLayout>
 
                             <com.google.android.material.button.MaterialButton
@@ -1381,10 +1208,10 @@
                                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="34dp"
-                                android:text="Reponer"
+                                android:text="Pedir"
                                 android:textSize="11sp"
-                                app:strokeColor="#0F766E"
-                                android:textColor="#0F766E"
+                                app:strokeColor="@color/prisma_teal"
+                                android:textColor="@color/prisma_teal"
                                 app:cornerRadius="6dp" />
                         </LinearLayout>
 
@@ -1398,7 +1225,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Pausar Suscripción Activa (Modo Prueba)"
-                    android:textColor="#94A3B8"
+                    android:textColor="@color/prisma_text_muted"
                     android:textSize="11sp" />
 
             </LinearLayout>
