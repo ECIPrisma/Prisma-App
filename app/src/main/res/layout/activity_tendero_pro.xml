@@ -31,9 +31,9 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- ========================================== -->
-            <!-- ESTADO 1: PAYWALL WOMPI (BLOQUEADO / FREE) -->
-            <!-- ========================================== -->
+            <!-- ============================================================== -->
+            <!-- ESTADO 1: PAYWALL WOMPI (BLOQUEADO / PROPUESTA DE VALOR SAAS)  -->
+            <!-- ============================================================== -->
             <LinearLayout
                 android:id="@+id/layoutPaywall"
                 android:layout_width="match_parent"
@@ -41,7 +41,110 @@
                 android:orientation="vertical"
                 android:visibility="visible">
 
-                <!-- Ficha Principal de Propuesta de Valor -->
+                <!-- Hero Card: Dark Slate & Teal B2B Fintech -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp"
+                    app:strokeColor="#1E293B"
+                    app:strokeWidth="1dp"
+                    android:layout_marginBottom="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="#0F172A"
+                        android:padding="22dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="14dp">
+
+                            <ImageView
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
+                                android:src="@drawable/ic_radar_target"
+                                app:tint="#14B8A6" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="PRISMA PRO TENDERO"
+                                android:textColor="#2DD4BF"
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+                                android:letterSpacing="0.08"
+                                android:layout_marginStart="10dp" />
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="MEMBRESÍA B2B"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:textColor="#042F2E"
+                                android:background="#14B8A6"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="3dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Inteligencia Territorial y Radar de Demanda para tu Tienda"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:lineSpacingExtra="3dp"
+                            android:layout_marginBottom="8dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Descubre exactamente qué productos se están agotando en tu barrio, configura combos de alta rentabilidad con IA y optimiza tu capital de trabajo."
+                            android:textColor="#94A3B8"
+                            android:textSize="12sp"
+                            android:lineSpacingExtra="2dp"
+                            android:layout_marginBottom="16dp" />
+
+                        <!-- Retorno de Inversión Proyectado -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:background="#1E293B"
+                            android:padding="12dp"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_trending_up"
+                                app:tint="#2DD4BF" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="10dp"
+                                android:text="Retorno Proyectado: Recupera los $49.000 COP en 5 días aplicando los combos de alta rotación sugeridos."
+                                android:textColor="#E2E8F0"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Matriz de Beneficios Analíticos -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -55,73 +158,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="20dp"
+                        android:padding="18dp"
                         android:background="#FFFFFF">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginBottom="12dp">
-
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:src="@drawable/ic_radar_analytics" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="PRISMA PRO TENDERO"
-                                android:textColor="#0F766E"
-                                android:textSize="14sp"
-                                android:textStyle="bold"
-                                android:letterSpacing="0.05"
-                                android:layout_marginStart="8dp" />
-
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_height="1dp"
-                                android:layout_weight="1" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="B2B SAAS"
-                                android:textSize="10sp"
-                                android:textStyle="bold"
-                                android:textColor="#475569"
-                                android:background="#F1F5F9"
-                                android:paddingHorizontal="6dp"
-                                android:paddingVertical="2dp" />
-                        </LinearLayout>
-
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Inteligencia Territorial y Optimización de Surtido"
-                            android:textSize="17sp"
+                            android:text="MÓDULOS INCLUIDOS EN LA SUSCRIPCIÓN"
+                            android:textSize="11sp"
                             android:textStyle="bold"
-                            android:textColor="#0F172A"
-                            android:layout_marginBottom="8dp" />
+                            android:letterSpacing="0.08"
+                            android:textColor="#64748B"
+                            android:layout_marginBottom="14dp" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Analítica prescriptiva basada en volumen transaccional consolidado para prevenir quiebres de inventario y maximizar margen comercial."
-                            android:textSize="13sp"
-                            android:textColor="#475569"
-                            android:lineSpacingExtra="3dp"
-                            android:layout_marginBottom="18dp" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="#F1F5F9"
-                            android:layout_marginBottom="16dp" />
-
-                        <!-- Módulo 1 -->
+                        <!-- Beneficio 1: Radar Territorial -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -144,7 +194,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Radar Territorial de Demanda"
+                                    android:text="Radar Territorial de Demanda (Radio 800m)"
                                     android:textSize="13sp"
                                     android:textStyle="bold"
                                     android:textColor="#0F172A" />
@@ -152,13 +202,13 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Ranking de los 10 productos con mayor rotación zonal por barrio y localidad."
-                                    android:textSize="12sp"
+                                    android:text="Monitoreo en tiempo real del clúster de tiendas vecinas en Kennedy Central."
+                                    android:textSize="11sp"
                                     android:textColor="#64748B" />
                             </LinearLayout>
                         </LinearLayout>
 
-                        <!-- Módulo 2 -->
+                        <!-- Beneficio 2: Minería de Canasta -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -181,7 +231,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Minería de Canasta (FP-Growth)"
+                                    android:text="Copiloto IA · Minería de Canasta (FP-Growth)"
                                     android:textSize="13sp"
                                     android:textStyle="bold"
                                     android:textColor="#0F172A" />
@@ -189,17 +239,18 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Configuración de combos cruzados con alta tasa de afinidad para elevar ticket promedio."
-                                    android:textSize="12sp"
+                                    android:text="Prescripción automática de combos de venta con márgenes superiores al 18%."
+                                    android:textSize="11sp"
                                     android:textColor="#64748B" />
                             </LinearLayout>
                         </LinearLayout>
 
-                        <!-- Módulo 3 -->
+                        <!-- Beneficio 3: Alertas Predictivas -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="14dp">
 
                             <ImageView
                                 android:layout_width="18dp"
@@ -217,7 +268,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Alertas de Abastecimiento Crítico"
+                                    android:text="Detección de Brechas y Quiebres de Stock"
                                     android:textSize="13sp"
                                     android:textStyle="bold"
                                     android:textColor="#0F172A" />
@@ -225,13 +276,13 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Notificación preventiva ante fluctuaciones de inventario y reposición prioritaria."
-                                    android:textSize="12sp"
+                                    android:text="Avisos tempranos antes de que los productos líderes se agoten en el sector."
+                                    android:textSize="11sp"
                                     android:textColor="#64748B" />
                             </LinearLayout>
                         </LinearLayout>
 
-                        <!-- Tarifa -->
+                        <!-- Tarifa Box -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -239,7 +290,7 @@
                             android:gravity="center_vertical"
                             android:background="#F8FAFC"
                             android:padding="14dp"
-                            android:layout_marginTop="18dp">
+                            android:layout_marginTop="6dp">
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -306,7 +357,6 @@
                             android:textColor="#0F172A"
                             android:layout_marginBottom="12dp" />
 
-                        <!-- Selector de medio de pago -->
                         <RadioGroup
                             android:id="@+id/rgMedioPago"
                             android:layout_width="match_parent"
@@ -363,7 +413,7 @@
                             android:layout_height="wrap_content"
                             android:background="#F1F5F9"
                             android:padding="10dp"
-                            android:text="Ambiente Sandbox: utilice 3991111111 (Nequi) o 4242424242424242 (Tarjeta) para procesar la transacción de forma inmediata."
+                            android:text="Ambiente Sandbox: 3991111111 (Nequi) o 4242424242424242 (Tarjeta) para procesar de forma inmediata."
                             android:textSize="11sp"
                             android:textColor="#475569"
                             android:layout_marginBottom="16dp" />
@@ -390,9 +440,9 @@
             </LinearLayout>
 
 
-            <!-- ============================================== -->
-            <!-- ESTADO 2: DASHBOARD PRO (DESBLOQUEADO / ACTIVO) -->
-            <!-- ============================================== -->
+            <!-- ============================================================== -->
+            <!-- ESTADO 2: DASHBOARD PRO ACTIVO (DESBLOQUEADO / ALTO IMPACTO)  -->
+            <!-- ============================================================== -->
             <LinearLayout
                 android:id="@+id/layoutProContent"
                 android:layout_width="match_parent"
@@ -427,7 +477,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="SUSCRIPCIÓN ACTIVA"
+                                android:text="MEMBRESÍA ACTIVA · PRISMA PRO"
                                 android:textSize="11sp"
                                 android:textStyle="bold"
                                 android:letterSpacing="0.06"
@@ -445,7 +495,7 @@
                                 android:id="@+id/tvDiasRestantes"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="30 días restantes"
+                                android:text="30 días de cobertura"
                                 android:textSize="12sp"
                                 android:textColor="#475569" />
                         </LinearLayout>
@@ -454,7 +504,7 @@
                             android:id="@+id/tvBarrioActivo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Zona Monitoreada: Kennedy Central"
+                            android:text="Clúster Comercial: Kennedy Central (Bogotá D.C.)"
                             android:textSize="14sp"
                             android:textStyle="bold"
                             android:textColor="#0F172A" />
@@ -462,40 +512,654 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Consolidado de rotación territorial calculado sobre pedidos de los últimos 30 días."
+                            android:text="Telemetría territorial y radar satelital en un radio de 800m con 42 tiendas clientes vinculadas."
                             android:textSize="11sp"
                             android:textColor="#64748B"
                             android:layout_marginTop="2dp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Sección 1: Top Rotación Zonal -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TOP ROTACIÓN TERRITORIAL"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.08"
-                    android:textColor="#64748B"
-                    android:layout_marginBottom="8dp" />
 
+                <!-- ============================================================== -->
+                <!-- TARJETA 1: RADAR GEOGRÁFICO Y GRÁFICOS DE DEMANDA TERRITORIAL   -->
+                <!-- ============================================================== -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="1dp"
-                    app:strokeColor="#E2E8F0"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp"
+                    app:strokeColor="#CBD5E1"
                     app:strokeWidth="1dp"
                     android:layout_marginBottom="16dp">
 
                     <LinearLayout
-                        android:id="@+id/llTopProductos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="14dp"
                         android:background="#FFFFFF">
+
+                        <!-- Encabezado de la Tarjeta de Radar -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:background="#0F172A"
+                            android:padding="16dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_radar_target"
+                                app:tint="#2DD4BF" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="10dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="RADAR TERRITORIAL EN VIVO"
+                                    android:textColor="#2DD4BF"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold"
+                                    android:letterSpacing="0.08" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Matriz de Demanda Barrial (UPZ 79)"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="RADIO: 800m"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:textColor="#042F2E"
+                                android:background="#2DD4BF"
+                                android:paddingHorizontal="6dp"
+                                android:paddingVertical="3dp" />
+                        </LinearLayout>
+
+                        <!-- Contenido Interno: Gráfico Geográfico de Cuadrantes -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="DENSIDAD DE CONSUMO POR CUADRANTE"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:letterSpacing="0.06"
+                                android:textColor="#64748B"
+                                android:layout_marginBottom="10dp" />
+
+                            <!-- Cuadrícula 2x2 representando los 4 cuadrantes del barrio -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="8dp">
+
+                                <!-- Cuadrante Norte -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:background="#F0FDFA"
+                                    android:padding="10dp"
+                                    android:layout_marginEnd="4dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="CUADRANTE NORTE"
+                                        android:textSize="9sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#0F766E" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Densidad: 88%"
+                                        android:textSize="12sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#0F172A" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Líder: Lácteos &amp; Café"
+                                        android:textSize="10sp"
+                                        android:textColor="#475569" />
+                                </LinearLayout>
+
+                                <!-- Cuadrante Oriente -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:background="#F8FAFC"
+                                    android:padding="10dp"
+                                    android:layout_marginStart="4dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="CUADRANTE ORIENTE"
+                                        android:textSize="9sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#475569" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Densidad: 82%"
+                                        android:textSize="12sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#0F172A" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Líder: Abarrotes &amp; Aceite"
+                                        android:textSize="10sp"
+                                        android:textColor="#475569" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="16dp">
+
+                                <!-- Cuadrante Sur -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:background="#F8FAFC"
+                                    android:padding="10dp"
+                                    android:layout_marginEnd="4dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="CUADRANTE SUR"
+                                        android:textSize="9sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#475569" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Densidad: 76%"
+                                        android:textSize="12sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#0F172A" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Líder: Bebidas &amp; Snacks"
+                                        android:textSize="10sp"
+                                        android:textColor="#475569" />
+                                </LinearLayout>
+
+                                <!-- Cuadrante Occidente -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:background="#F8FAFC"
+                                    android:padding="10dp"
+                                    android:layout_marginStart="4dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="CUADRANTE OCCIDENTE"
+                                        android:textSize="9sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#475569" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Densidad: 69%"
+                                        android:textSize="12sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#0F172A" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Líder: Confitería"
+                                        android:textSize="10sp"
+                                        android:textColor="#475569" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="BARÓMETRO DE VELOCIDAD DE ROTACIÓN"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:letterSpacing="0.06"
+                                android:textColor="#64748B"
+                                android:layout_marginBottom="8dp" />
+
+                            <!-- Gráfico de barras horizontales de demanda -->
+                            <!-- Barra 1: Lácteos -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginBottom="8dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Lácteos y Derivados"
+                                        android:textSize="11sp"
+                                        android:textColor="#1E293B" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="92% rotación · +24.0%"
+                                        android:textSize="11sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#0F766E" />
+                                </LinearLayout>
+
+                                <ProgressBar
+                                    style="?android:attr/progressBarStyleHorizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="6dp"
+                                    android:progress="92"
+                                    android:progressTint="#0F766E"
+                                    android:layout_marginTop="3dp" />
+                            </LinearLayout>
+
+                            <!-- Barra 2: Bebidas y Refrescos -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginBottom="8dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Bebidas y Refrescos"
+                                        android:textSize="11sp"
+                                        android:textColor="#1E293B" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="85% rotación · +19.5%"
+                                        android:textSize="11sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#0F766E" />
+                                </LinearLayout>
+
+                                <ProgressBar
+                                    style="?android:attr/progressBarStyleHorizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="6dp"
+                                    android:progress="85"
+                                    android:progressTint="#0F766E"
+                                    android:layout_marginTop="3dp" />
+                            </LinearLayout>
+
+                            <!-- Barra 3: Abarrotes Básicos -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Abarrotes Básicos"
+                                        android:textSize="11sp"
+                                        android:textColor="#1E293B" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="76% rotación · +15.0%"
+                                        android:textSize="11sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#475569" />
+                                </LinearLayout>
+
+                                <ProgressBar
+                                    style="?android:attr/progressBarStyleHorizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="6dp"
+                                    android:progress="76"
+                                    android:progressTint="#475569"
+                                    android:layout_marginTop="3dp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <!-- ============================================================== -->
+                <!-- TARJETA 2: COPILOTO IA · MINERÍA DE CANASTA Y PRESCRIPCIÓN     -->
+                <!-- (DEDICADA EXCLUSIVAMENTE A LA IA - SEPARADA DE COMPRAS)        -->
+                <!-- ============================================================== -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp"
+                    app:strokeColor="#CBD5E1"
+                    app:strokeWidth="1dp"
+                    android:layout_marginBottom="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp"
+                        android:background="#FFFFFF">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="12dp">
+
+                            <ImageView
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:src="@drawable/ic_sparkle_ai"
+                                app:tint="#0F766E" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="COPILOTO IA TERRITORIAL"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold"
+                                    android:letterSpacing="0.08"
+                                    android:textColor="#0F766E" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Minería de Canasta &amp; Patrones Zonal"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#0F172A" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="FP-GROWTH"
+                                android:textSize="9sp"
+                                android:textStyle="bold"
+                                android:textColor="#0F766E"
+                                android:background="#F0FDFA"
+                                android:paddingHorizontal="6dp"
+                                android:paddingVertical="3dp" />
+                        </LinearLayout>
+
+                        <!-- Combo Prescriptivo 1 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="#F8FAFC"
+                            android:padding="12dp"
+                            android:layout_marginBottom="10dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:layout_marginBottom="4dp">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Combo Desayuno: Café 500g + Leche 1L"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#0F172A" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Margen: +18.2%"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#065F46"
+                                    android:background="#ECFDF5"
+                                    android:paddingHorizontal="6dp"
+                                    android:paddingVertical="2dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="6dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Lift: 1.83x"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#0F766E"
+                                    android:background="#F0FDFA"
+                                    android:paddingHorizontal="4dp"
+                                    android:paddingVertical="1dp"
+                                    android:layout_marginEnd="6dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Confianza: 83.4%"
+                                    android:textSize="10sp"
+                                    android:textColor="#64748B" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Prescripción IA: 8 de cada 10 clientes que piden café llevan leche si está en el mostrador frontal. Ofrecer paquete conjunto a $19.800 COP."
+                                android:textSize="11sp"
+                                android:textColor="#475569" />
+                        </LinearLayout>
+
+                        <!-- Combo Prescriptivo 2 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="#F8FAFC"
+                            android:padding="12dp"
+                            android:layout_marginBottom="12dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:layout_marginBottom="4dp">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Combo Tarde: Jugo Hit 200ml + Galletas Festival"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#0F172A" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Margen: +22.0%"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#065F46"
+                                    android:background="#ECFDF5"
+                                    android:paddingHorizontal="6dp"
+                                    android:paddingVertical="2dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="6dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Lift: 2.14x"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#0F766E"
+                                    android:background="#F0FDFA"
+                                    android:paddingHorizontal="4dp"
+                                    android:paddingVertical="1dp"
+                                    android:layout_marginEnd="6dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Confianza: 79.1%"
+                                    android:textSize="10sp"
+                                    android:textColor="#64748B" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Prescripción IA: Alta rotación entre 15:00 y 18:00 (salida escolar). Exhibir en bandeja de caja registradora."
+                                android:textSize="11sp"
+                                android:textColor="#475569" />
+                        </LinearLayout>
+
+                        <!-- Alerta Preventiva de Quiebre de Barrio -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:background="#FEF2F2"
+                            android:padding="10dp"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ALERTA DE STOCK"
+                                android:textSize="9sp"
+                                android:textStyle="bold"
+                                android:textColor="#991B1B"
+                                android:background="#FEE2E2"
+                                android:paddingHorizontal="5dp"
+                                android:paddingVertical="2dp"
+                                android:layout_marginEnd="8dp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="El 75% de las tiendas del cuadrante agotan Café los viernes. Anticipa tu reposición."
+                                android:textSize="11sp"
+                                android:textColor="#991B1B" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <!-- ============================================================== -->
+                <!-- TARJETA 3: CATÁLOGO DE REPOSICIÓN ZONAL (SOLO PRODUCTOS)       -->
+                <!-- ============================================================== -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="2dp"
+                    app:strokeColor="#CBD5E1"
+                    app:strokeWidth="1dp"
+                    android:layout_marginBottom="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:background="#FFFFFF">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="REFERENCIAS CRÍTICAS DEL SECTOR (TOP 4 ROTACIÓN)"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:letterSpacing="0.08"
+                            android:textColor="#64748B"
+                            android:layout_marginBottom="12dp" />
 
                         <!-- Item 01 -->
                         <LinearLayout
@@ -533,7 +1197,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Lácteos · +24.0% demanda · Sugerido: $4.800"
+                                    android:text="Lácteos · +24.0% demanda · Venta sugerida: $4.800"
                                     android:textSize="11sp"
                                     android:textColor="#64748B" />
                             </LinearLayout>
@@ -583,7 +1247,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Arroz Diana Tradicional 1kg"
+                                    android:text="Arroz Diana Premium 1kg"
                                     android:textSize="13sp"
                                     android:textStyle="bold"
                                     android:textColor="#0F172A" />
@@ -591,7 +1255,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Granos · +18.0% demanda · Sugerido: $5.200"
+                                    android:text="Granos · +19.5% demanda · Venta sugerida: $4.200"
                                     android:textSize="11sp"
                                     android:textColor="#64748B" />
                             </LinearLayout>
@@ -649,7 +1313,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Abarrotes · +15.0% demanda · Sugerido: $10.500"
+                                    android:text="Abarrotes · +15.0% demanda · Venta sugerida: $10.500"
                                     android:textSize="11sp"
                                     android:textColor="#64748B" />
                             </LinearLayout>
@@ -699,7 +1363,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Galletas Festival Chocolate"
+                                    android:text="Galletas Festival Vainilla"
                                     android:textSize="13sp"
                                     android:textStyle="bold"
                                     android:textColor="#0F172A" />
@@ -707,7 +1371,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Snacks · +20.0% demanda · Sugerido: $1.200"
+                                    android:text="Confitería · +11.2% demanda · Venta sugerida: $1.200"
                                     android:textSize="11sp"
                                     android:textColor="#64748B" />
                             </LinearLayout>
@@ -723,141 +1387,7 @@
                                 android:textColor="#0F766E"
                                 app:cornerRadius="6dp" />
                         </LinearLayout>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
 
-                <!-- Sección 2: Minería de Canasta -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="REGLAS DE ASOCIACIÓN DE CANASTA (FP-GROWTH)"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.08"
-                    android:textColor="#64748B"
-                    android:layout_marginBottom="8dp" />
-
-                <!-- Formato Sugerido 1 -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="1dp"
-                    app:strokeColor="#E2E8F0"
-                    app:strokeWidth="1dp"
-                    android:layout_marginBottom="12dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:background="#FFFFFF">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginBottom="6dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Surtido Cruzado: Café + Lácteos"
-                                android:textSize="13sp"
-                                android:textStyle="bold"
-                                android:textColor="#0F172A" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Margen: +18.2%"
-                                android:textSize="11sp"
-                                android:textStyle="bold"
-                                android:textColor="#065F46"
-                                android:background="#ECFDF5"
-                                android:paddingHorizontal="6dp"
-                                android:paddingVertical="2dp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Artículos: Café Sello Rojo 500g + Leche Alquería 1L"
-                            android:textSize="12sp"
-                            android:textColor="#334155"
-                            android:layout_marginBottom="6dp" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Evidencia: Coeficiente Lift 1.83. El 83.4% de los pedidos de café en este sector incluyen leche entera."
-                            android:textSize="11sp"
-                            android:textColor="#64748B" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Formato Sugerido 2 -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="1dp"
-                    app:strokeColor="#E2E8F0"
-                    app:strokeWidth="1dp"
-                    android:layout_marginBottom="20dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:background="#FFFFFF">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginBottom="6dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Surtido Cruzado: Bebidas + Confitería"
-                                android:textSize="13sp"
-                                android:textStyle="bold"
-                                android:textColor="#0F172A" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Margen: +22.0%"
-                                android:textSize="11sp"
-                                android:textStyle="bold"
-                                android:textColor="#065F46"
-                                android:background="#ECFDF5"
-                                android:paddingHorizontal="6dp"
-                                android:paddingVertical="2dp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Artículos: Jugo Hit 200ml + Galletas Festival"
-                            android:textSize="12sp"
-                            android:textColor="#334155"
-                            android:layout_marginBottom="6dp" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Evidencia: Concentración de rotación en vitrina en franja horaria de 15:00 a 18:00 horas."
-                            android:textSize="11sp"
-                            android:textColor="#64748B" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
