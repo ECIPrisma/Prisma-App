@@ -7,6 +7,11 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+    <!-- Permisos de Servicio en Primer Plano para Telemetría Satelital Continua -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:name=".PrismaApplication"
         android:allowBackup="true"
@@ -90,6 +95,13 @@
             android:name=".ui.tendero.RastreoCamionActivity"
             android:exported="false"
             android:theme="@style/Theme.PRISMA.NoActionBar" />
+
+        <!-- Servicio en Primer Plano para Telemetría Satelital Continua del Camión -->
+        <service
+            android:name=".service.RastreoGpsForegroundService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="location" />
 
     </application>
 

@@ -104,6 +104,7 @@ class ConductorMapaRutaActivity : AppCompatActivity() {
         configurarChips()
         configurarMapaOSM()
         actualizarDetalleLocal(0)
+        iniciarServicioGpsEnPrimerPlano()
     }
 
     private fun configurarChips() {
@@ -324,5 +325,37 @@ class ConductorMapaRutaActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         binding.mapView.onPause()
+    }
+
+    override fun onDestroy() {
+        detenerServicioGpsEnPrimerPlano()
+        super.onDestroy()
+    }
+
+    private fun iniciarServicioGpsEnPrimerPlano() {
+        try {
+            val serviceIntent = android.content.Intent(this, com.prisma.mobile.service.RastreoGpsForegroundService::class.java).apply {
+                action = com.prisma.mobile.service.RastreoGpsForegroundService.ACTION_START
+                putExtra(com.prisma.mobile.service.RastreoGpsForegroundService.EXTRA_RUTA_ID, 1L)
+            }
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                startForegroundService(serviceIntent)
+            } else {
+                startService(serviceIntent)
+            }
+        } catch (e: Exception) {
+            // Silencioso si no hay permisos de servicio en foreground
+        }
+    }
+
+    private fun detenerServicioGpsEnPrimerPlano() {
+        try {
+            val stopIntent = android.content.Intent(this, com.prisma.mobile.service.RastreoGpsForegroundService::class.java).apply {
+                action = com.prisma.mobile.service.RastreoGpsForegroundService.ACTION_STOP
+            }
+            startService(stopIntent)
+        } catch (e: Exception) {
+            // Silencioso
+        }
     }
 }
